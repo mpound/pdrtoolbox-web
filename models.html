@@ -19,14 +19,78 @@
             </div>
         </nav>
         <header class="masthead bg-primary text-white text-center">
-            <div class="container d-flex align-items-center flex-column">
+            <div class="container d-flex flex-column">
                 <!-- Masthead Subheading-->
-                <p class="pre-wrap masthead-subheading font-weight-light mb-0">MODELS</a>
-        <p style="text-align:left; white-space:normal;">
-        Here we describe the models and model parameters in more detail and have links to FITS files and plots as in the current PDRT
-        </p>
-            </div>
-        </header>
+                <p class="pre-wrap masthead-subheading font-weight-light mb-0">THE MODELS</a></p>
+<p style="text-align:left; white-space:normal;">
+
+The models are based on the work of 
+<a class="yellowtext" href="http://adsbit.harvard.edu/cgi-bin/nph-iarticle_query?1985ApJ...291..722T">Tielens &amp; Hollenbach 1985;</a> 
+<a class="yellowtext" href="http://adsbit.harvard.edu/cgi-bin/nph-iarticle_query?1990ApJ...358..116W">
+Wolfire et al. 1990;
+</a>
+<a class="yellowtext" href='http://adsbit.harvard.edu/cgi-bin/nph-iarticle_query?1991ApJ...377..192H'>
+Hollenbach et al. 1991;
+</a>
+<a class="yellowtext" href="http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=1999ApJ...527..795K">Kaufman et al. 1999</a>; and <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2006ApJ...644..283K/abstract">Kaufman et al. 2006</a>.
+
+ For a given set of gas phase elemental abundances and grain properties,
+ each model is described by a constant H nucleus number density,
+<span class="math notranslate nohighlight">\(n\)</span>,
+and incident far-ultraviolet intensity 
+<span class="math notranslate nohighlight">\(G_0\)</span>. 
+ The models solve for the
+ equilibrium chemistry, thermal balance, and radiation transfer through
+ a PDR layer. Our treatment updates previous results
+ to use recent values of atomic and molecular data, current chemical
+ rate coefficients, and grain photolectric heating rates which include
+ treatments of small grains and large molecules.
+
+The are a number model data sets ("ModelSets") currently available in PDR Toolbox.
+The ModelSets come in two basic flavors: constant extinction and constant thermal pressure. The constant extinction ModelSets present spectral line and continuum intensity ratios 
+as a function of 
+<span class="math notranslate nohighlight">\(G_0\)</span> and 
+<span class="math notranslate nohighlight">\(n\)</span> 
+for visual extinctions up to 
+<span class="math notranslate nohighlight">\(A_v = 10\)</span>. The constant thermal pressure ModelSets present the intensity ratios as a function of 
+<span class="math notranslate nohighlight">\(G_0\)</span> 
+and thermal pressure <span class="math notranslate nohighlight">\(P_{th}\)</span>.
+
+</p>
+<h6>2006 Models</h6>
+<p  style="text-align:left; white-space:normal;">
+In <a class="yellowtext" href="https://pdrtpy.readthedocs.io">pdrtpy</a>, these are referred to as the <i>wk2006</i> ModelSet.
+</p>
+
+<h6>2020 Models</h6>
+    <div class="row">
+        <div class="col-lg-6 ml-auto">
+            <p style="text-align:left; white-space:normal;">
+            These model data start with the 2006 PDR model code and add improved physics and chemistry. Critical updates include those discussed in
+            <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2016ApJ...826..183N/abstract">Neufeld &amp; Wolfire 2016</a>, plus photo rates from
+            <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2017A%26A...602A.105H/abstract">Heays et al. 2017</a>, oxygen chemistry rates from
+            <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2018ApJ...856..100K/abstract">Kovalenko et al. 2018</a> and
+            <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2018ApJ...854...25T/abstract">Tran et al. 2018</a>,
+            and carbon chemistry rates from
+            <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2019MNRAS.487.3427D/abstract">Dagdigian 2019</a>. We have also implemented new collisional
+            excitation rates for [O I] from
+            <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2018MNRAS.474.2313L/abstract">Lique et al. 2018</a> (and Lique private
+            communication) and have included <sup>13</sup>C chemistry along with the
+            emitted line intensities for  [<sup>13</sup>C II] and <sup>13</sup>CO.  At right, we show the currently available spectral lines and those we expect to deploy later in the project. In addition, we will compute ModelSets for a full range of metallicity <span class="math">\(Z\)</span>.
+            </p>
+            </p><p style="text-align:left; white-space:normal;">
+            In <a class="yellowtext" href="https://pdrtpy.readthedocs.io">pdrtpy</a>, these are referred to as the <i>wk2020</i> ModelSet.
+            </p>
+        </div>
+        <div class="col-lg-6 ml-auto">
+            <a href="images/pdrttable.png"><img style="margin:0em 1em 1em 1em;border:3px;" src="images/pdrttable.png" width="70%"></a>
+        </div>
+    </div>
+
+<h6>Using Alternate Models</h6>
+
+</div>
+</header>
 <!--#include virtual="includes/footer.inc" -->
 
     </body>
