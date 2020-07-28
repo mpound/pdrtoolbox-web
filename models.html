@@ -18,79 +18,286 @@
                 </div>
             </div>
         </nav>
-        <header class="masthead bg-primary text-white text-center">
+        <header class="mymasthead bg-primary text-white text-center">
             <div class="container d-flex flex-column">
                 <!-- Masthead Subheading-->
-                <p class="pre-wrap masthead-subheading font-weight-light mb-0">THE MODELS</a></p>
+                <p class="pre-wrap mymasthead-heading font-weight-bold mb-0">The Models</p>
+                <p style="text-align:left; white-space:normal;">
+
+                The models are based on the work of 
+                <a class="yellowtext" href="http://adsbit.harvard.edu/cgi-bin/nph-iarticle_query?1985ApJ...291..722T">Tielens &amp; Hollenbach 1985;</a> 
+                <a class="yellowtext" href="http://adsbit.harvard.edu/cgi-bin/nph-iarticle_query?1990ApJ...358..116W">
+                Wolfire et al. 1990;
+                </a>
+                <a class="yellowtext" href='http://adsbit.harvard.edu/cgi-bin/nph-iarticle_query?1991ApJ...377..192H'>
+                Hollenbach et al. 1991;
+                </a>
+                <a class="yellowtext" href="http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=1999ApJ...527..795K">Kaufman et al. 1999</a>; 
+                and <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2006ApJ...644..283K/abstract">Kaufman et al. 2006</a>.
+
+                 For a given set of gas phase elemental abundances and grain properties,
+                 each model is described by a constant H nucleus number density,
+                <span class="math notranslate nohighlight">\(n\)</span>,
+                and incident far-ultraviolet intensity 
+                <span class="math notranslate nohighlight">\(G_0\)</span>. 
+                 The models solve for the
+                 equilibrium chemistry, thermal balance, and radiation transfer through
+                 a PDR layer. Our treatment updates previous results
+                 to use recent values of atomic and molecular data, current chemical
+                 rate coefficients, and grain photolectric heating rates which include
+                 treatments of small grains and large molecules.
+
+                The are a number model data sets ("ModelSets") currently available in PDR Toolbox.
+                The ModelSets come in two basic flavors: constant extinction and constant thermal pressure. The constant extinction ModelSets present spectral line and continuum intensity ratios 
+                as a function of 
+                <span class="math notranslate nohighlight">\(G_0\)</span> and 
+                <span class="math notranslate nohighlight">\(n\)</span> 
+                for visual extinctions up to 
+                <span class="math notranslate nohighlight">\(A_v = 10\)</span>. The constant thermal pressure ModelSets present the intensity ratios as a function of 
+                <span class="math notranslate nohighlight">\(G_0\)</span> 
+                and thermal pressure <span class="math notranslate nohighlight">\(P_{th}\)</span>.
+                PDR Toolbox will also support <a class="yellowtext" href="#alternate">importing the external models of your choice</a>, provided they are stored in the right format.
+                </p>
 <p style="text-align:left; white-space:normal;">
+The ratio plots are used to determine the beam averaged values of 
+<span class="math notranslate nohighlight">\(G_0\)</span> and <span class="math notranslate nohighlight">\(n\)</span>. 
+(Note that <span class="math notranslate nohighlight">\(n\)</span> is the H nucleus density (cm<sup>-3</sup>)
+so that the maximum abundance of H<sub>2</sub>, for example, is 
+<span class="math notranslate nohighlight">\(n(H_2)= 0.5 n\)</span>). 
+The values of <span class="math notranslate nohighlight">\(G_0\)</span> and <span class="math notranslate nohighlight">\(n\)</span> 
+are obtained by <a class="yellowtext" href="http://pdrtpy.readthedocs.io">fitting the observations to the model space.</a>
+Required are at least 
+two observations of line intensity ratios or 
+one line intensity ratio and the ratio of the [C II] + [O I]
+intensity to the infrared dust continuum emission <span class="math notranslate nohighlight">\(I_{FIR}\)</span>. 
+More than two observed ratios will of course do a better job of determining unique <span class="math notranslate nohighlight">\(G_0\)</span> and <span class="math notranslate nohighlight">\(n\)</span>.
 
-The models are based on the work of 
-<a class="yellowtext" href="http://adsbit.harvard.edu/cgi-bin/nph-iarticle_query?1985ApJ...291..722T">Tielens &amp; Hollenbach 1985;</a> 
-<a class="yellowtext" href="http://adsbit.harvard.edu/cgi-bin/nph-iarticle_query?1990ApJ...358..116W">
-Wolfire et al. 1990;
-</a>
-<a class="yellowtext" href='http://adsbit.harvard.edu/cgi-bin/nph-iarticle_query?1991ApJ...377..192H'>
-Hollenbach et al. 1991;
-</a>
-<a class="yellowtext" href="http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=1999ApJ...527..795K">Kaufman et al. 1999</a>; and <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2006ApJ...644..283K/abstract">Kaufman et al. 2006</a>.
-
- For a given set of gas phase elemental abundances and grain properties,
- each model is described by a constant H nucleus number density,
-<span class="math notranslate nohighlight">\(n\)</span>,
-and incident far-ultraviolet intensity 
-<span class="math notranslate nohighlight">\(G_0\)</span>. 
- The models solve for the
- equilibrium chemistry, thermal balance, and radiation transfer through
- a PDR layer. Our treatment updates previous results
- to use recent values of atomic and molecular data, current chemical
- rate coefficients, and grain photolectric heating rates which include
- treatments of small grains and large molecules.
-
-The are a number model data sets ("ModelSets") currently available in PDR Toolbox.
-The ModelSets come in two basic flavors: constant extinction and constant thermal pressure. The constant extinction ModelSets present spectral line and continuum intensity ratios 
-as a function of 
-<span class="math notranslate nohighlight">\(G_0\)</span> and 
-<span class="math notranslate nohighlight">\(n\)</span> 
-for visual extinctions up to 
-<span class="math notranslate nohighlight">\(A_v = 10\)</span>. The constant thermal pressure ModelSets present the intensity ratios as a function of 
-<span class="math notranslate nohighlight">\(G_0\)</span> 
-and thermal pressure <span class="math notranslate nohighlight">\(P_{th}\)</span>.
-
+<!-- We have also provided
+a diagnostic plot combining the [C II]/[O I] and ([C II]+[O I])/FIR 
+ratios as in Wolfire, Tielens, &amp; Hollenbach 1990. 
+-->
 </p>
-<h6>2006 Models</h6>
-<p  style="text-align:left; white-space:normal;">
-In <a class="yellowtext" href="https://pdrtpy.readthedocs.io">pdrtpy</a>, these are referred to as the <i>wk2006</i> ModelSet.
-</p>
+<p style="text-align:left; white-space:normal;">
+It is important
+to correct for the different area filling factors for various species. 
+For example, diffuse [C II] emission may fill the observing beam whereas
+[O I] emission may arise from a smaller, high density and temperature
+region. In such a case, it would not be appropriate to take the ratio
+of observed fluxes for fitting. Instead the ratio of intensities
+should be used or the ratio of fluxes corrected for the separate emitting
+solid angles. Note also that the ([C II] + [O I])/<span class="math notranslate nohighlight">\(I_{FIR}\)</span> model ratios
+are for a single face-on PDR. For the case of active regions of galaxies, 
+or where there may be many clouds contained within the beam, 
+the FIR continuum is observed from both the near and far side of the cloud.
+Thus, the observed ratio should be multiplied by a factor 2 (or
+equivalently the model values should be divided by 2).
+           </div>
+      </header>
 
-<h6>2020 Models</h6>
-    <div class="row">
-        <div class="col-lg-6 ml-auto">
-            <p style="text-align:left; white-space:normal;">
-            These model data start with the 2006 PDR model code and add improved physics and chemistry. Critical updates include those discussed in
-            <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2016ApJ...826..183N/abstract">Neufeld &amp; Wolfire 2016</a>, plus photo rates from
-            <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2017A%26A...602A.105H/abstract">Heays et al. 2017</a>, oxygen chemistry rates from
-            <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2018ApJ...856..100K/abstract">Kovalenko et al. 2018</a> and
-            <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2018ApJ...854...25T/abstract">Tran et al. 2018</a>,
-            and carbon chemistry rates from
-            <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2019MNRAS.487.3427D/abstract">Dagdigian 2019</a>. We have also implemented new collisional
-            excitation rates for [O I] from
-            <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2018MNRAS.474.2313L/abstract">Lique et al. 2018</a> (and Lique private
-            communication) and have included <sup>13</sup>C chemistry along with the
-            emitted line intensities for  [<sup>13</sup>C II] and <sup>13</sup>CO.  At right, we show the currently available spectral lines and those we expect to deploy later in the project. In addition, we will compute ModelSets for a full range of metallicity <span class="math">\(Z\)</span>.
-            </p>
-            </p><p style="text-align:left; white-space:normal;">
-            In <a class="yellowtext" href="https://pdrtpy.readthedocs.io">pdrtpy</a>, these are referred to as the <i>wk2020</i> ModelSet.
-            </p>
-        </div>
-        <div class="col-lg-6 ml-auto">
-            <a href="images/pdrttable.png"><img style="margin:0em 1em 1em 1em;border:3px;" src="images/pdrttable.png" width="70%"></a>
-        </div>
-    </div>
+      <section class="mypage-section bg-primary text-white mb-0" id="modelspecifics">
+        <div class="container">
+                <div class="text-center">
+                    <h2 class="mypage-section-heading d-inline-block text-white">Model Specifics</h2>
+                </div>
+        <div class="row">
+            <div class="col-lg-7 ml-auto">
 
-<h6>Using Alternate Models</h6>
+        <h5>2006 Models</h5>
+        <p  style="text-align:left; white-space:normal;">
+        These models are identical to those available in the "classic" web-based PDR Toolbox.
 
+        In <a class="yellowtext" href="https://pdrtpy.readthedocs.io">pdrtpy</a>, these are referred to as the <i>wk2006</i> ModelSet.
+        </p>
+
+        <h5>2020 Models</h5>
+                    <p style="text-align:left; white-space:normal;">
+                    These model data start with the 2006 PDR model code and add improved physics and chemistry. Critical updates include those discussed in
+                    <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2016ApJ...826..183N/abstract">Neufeld &amp; Wolfire 2016</a>, plus photo rates from
+                    <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2017A%26A...602A.105H/abstract">Heays et al. 2017</a>, oxygen chemistry rates from
+                    <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2018ApJ...856..100K/abstract">Kovalenko et al. 2018</a> and
+                    <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2018ApJ...854...25T/abstract">Tran et al. 2018</a>,
+                    and carbon chemistry rates from
+                    <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2019MNRAS.487.3427D/abstract">Dagdigian 2019</a>. We have also implemented new collisional
+                    excitation rates for [O I] from
+                    <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2018MNRAS.474.2313L/abstract">Lique et al. 2018</a> (and Lique private
+                    communication) and have included <sup>13</sup>C chemistry along with the
+                    emitted line intensities for  [<sup>13</sup>C II] and <sup>13</sup>CO.  In Box 1, we show the currently available spectral lines and those we expect to deploy later in the project. In addition, we will compute ModelSets for a full range of metallicity <span class="math">\(Z\)</span>.
+                    </p>
+                    </p><p style="text-align:left; white-space:normal;">
+                    In <a class="yellowtext" href="https://pdrtpy.readthedocs.io">pdrtpy</a>, these are referred to as the <i>wk2020</i> ModelSet.
+                    </p>
+                </div><!-- col-->
+                <div class="col-lg-5 ml-auto">
+                  <div class="card-transparent">
+                    <a href="images/pdrttable.png"><img class="card-img-top" style="margin:0em 1em 1em 1em;border:3px;" src="images/pdrttable.png" align="left" width="80%"></a>
+        <div class="card-body"><p class="card-text" style="font-variant: small-caps;text-align:left">Current and future spectral line and metallicity coverage of the PDR Toolbox.</p></div>
+                  </div> <!-- card -->
+                </div> <!-- col-->
+            </div> <!-- row -->
+
+        <h5>Model Parameters</h5>
+        <p style="text-align:left; white-space:normal;">
+        Our <a class="yellowtext" href="#2006">2006 models</a> use the standard parameters from <a class="yellowtext" href="http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=1999ApJ...527..795K">Kaufman et al. 1999</a>.   Changes for the
+        <a class="yellowtext" href="#2020">2020 models</a> are listed below.
+        The formation rate of H<sub>2</sub> goes as 
+        <span class="math notranslate nohighlight">\(R_{form}~n_{HI}~n\)</span>.
+        The PAH abundance <span class="math notranslate nohighlight">\(X_{PAH}=n_{PAH}/n\)</span>.
+        <!-- Gas Phase abundances of C, O, Si, S, Fe, Mg are from Savage &amp; Sembach 1996 -->
+        </p>
+        <a name="2006">
+
+    <table class="table table-striped overflow-auto" width="100%" bgcolor="white">
+        <caption class="tablecaption"><h6>Parameters for 2006 Models</h6></caption>
+        <thead>
+            <tr><th>Parameter</th>
+            <th>Symbol</th>
+            <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <td>Turbulent Doppler Velocity</td>
+            <td><span class="math notranslate nohighlight">\(\delta v_D\)</span></td>
+            <td>1.5 km s<sup>-1</sup></td>
+            </tr>
+
+            <tr>
+            <td>Carbon abundance</td>
+            <td><span class="math notranslate nohighlight">\(X_C\)</span></td>
+            <td><span class="math notranslate nohighlight">\(1.4\times10^{-4}\)</span></td>
+            </tr>
+
+            <tr>
+            <td>Oxygen abundance</td>
+            <td><span class="math notranslate nohighlight">\(X_O\)</span></td>
+            <td><span class="math notranslate nohighlight">\(3.0\times10^{-4}\)</span></td>
+            </tr>
+
+            <tr>
+            <td>Silicon abundance</td>
+            <td><span class="math notranslate nohighlight">\(X_{Si}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(1.7\times10^{-6}\)</span></td>
+            </tr>
+
+            <tr>
+            <td>Sulfur abundance</td>
+            <td><span class="math notranslate nohighlight">\(X_{S}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(2.8\times10^{-5}\)</span></td>
+            </tr>
+
+            <tr>
+            <td>Iron abundance</td>
+            <td><span class="math notranslate nohighlight">\(X_{Fe}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(1.7\times10^{-7}\)</span></td>
+            </tr>
+
+            <tr>
+            <td>Magnesium abundance</td>
+            <td><span class="math notranslate nohighlight">\(X_{Mg}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(1.1\times10^{-6}\)</span></td>
+            </tr>
+
+            <tr>
+            <td>Dust abundance relative to diffuse ISM</td>
+            <td><span class="math notranslate nohighlight">\(\delta_d\)</span></td>
+            <td>1</td>
+            </tr>
+
+            <tr>
+            <td>FUV Dust absorption/visual extinction</td>
+            <td><span class="math notranslate nohighlight">\(\delta_{UV}\)</span></td>
+            <td>1.8</td>
+            </tr>
+
+            <tr>
+            <td>Dust visual extinction per H</td>
+            <td><span class="math notranslate nohighlight">\(\sigma_V\)</span></td>
+            <td><span class="math notranslate nohighlight">\(5\times10^{-22}\)</span> cm<sup>-2</sup></td>
+            </tr>
+
+            <tr>
+            <td>Formation rate of H<sub>2</sub> on dust</td>
+            <td><span class="math notranslate nohighlight">\(R_{form}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(3\times10^{-17}\)</span> s<sup>-1</sup></td>
+            </tr>
+
+            <tr>
+            <td>PAH abundance</td>
+            <td><span class="math notranslate nohighlight">\(X_{PAH}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(5\times10^{-7}\)</span></td>
+            </tr>
+
+            <tr>
+            <td>Cloud H density</td>
+            <td><span class="math notranslate nohighlight">\(n\)</span></td>
+            <td><span class="math notranslate nohighlight">\(10^{1} \le n \le 10^{7}\)</span> cm<sup>-3</sup></td>
+            </tr>
+
+            <tr>
+            <td>Incident UV flux</td>
+            <td><span class="math notranslate nohighlight">\(G_0\)</span></td>
+            <td><span class="math notranslate nohighlight">\(10^{-0.5} \le G_0 \le 10^{6.5}\)</span> Habing</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+<a name="2020">
+    <table class="table table-striped" width="100%" bgcolor="white">
+        <caption class="tablecaption"><h6>Parameters for 2020 Models Changed from 2006</h6></caption>
+        <thead>
+            <tr><th>Parameter</th>
+            <th>Symbol</th>
+            <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <td>Carbon abundance</td>
+            <td><span class="math notranslate nohighlight">\(X_C\)</span></td>
+            <td><span class="math notranslate nohighlight">\(1.6\times10^{-4}\)</span></td>
+            </tr>
+
+            <tr>
+            <td>Oxygen abundance</td>
+            <td><span class="math notranslate nohighlight">\(X_O\)</span></td>
+            <td><span class="math notranslate nohighlight">\(3.2\times10^{-4}\)</span></td>
+            </tr>
+
+            <tr>
+            <td>Dust visual extinction per H</td>
+            <td><span class="math notranslate nohighlight">\(\sigma_V\)</span></td>
+            <td><span class="math notranslate nohighlight">\(5.26\times10^{-22}\)</span> cm<sup>-2</sup></td>
+            </tr>
+
+            <tr>
+            <td>Formation rate of H<sub>2</sub> on dust</td>
+            <td><span class="math notranslate nohighlight">\(R_{form}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(6\times10^{-17}\)</span> s<sup>-1</sup></td>
+            </tr>
+
+            <tr>
+            <td>PAH abundance</td>
+            <td><span class="math notranslate nohighlight">\(X_{PAH}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(2\times10^{-7}\)</span></td>
+            </tr>
+
+
+        </tbody>
+    </table>
 </div>
-</header>
+</section>
+
+<a name="alternate">
+      <section class="mypage-section bg-primary text-white mb-0" id="alternatemodels">
+        <div class="container">
+                <div class="text-center">
+                    <h2 class="page-section-heading d-inline-block text-white">Using Alternate Models</h2>
+                </div>
+<p style="text-align:left; white-space:normal;">Instructions to follow.</p>
+
+    </div>
+    </section>
 <!--#include virtual="includes/footer.inc" -->
 
     </body>

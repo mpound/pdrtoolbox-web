@@ -23,6 +23,7 @@
   --danger: #dc3545;
   --light: #f8f9fa;
   --dark: #343a40;
+  --table-border-color: #ffffff;
   --breakpoint-xs: 0;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -52,6 +53,28 @@
 .graytext {
     color:lightgray;
 }
+.darkgraytext {
+    color:darkgray;
+}
+
+.mymasthead {
+  padding-top: calc(6rem + 74px);
+  padding-bottom: 3rem;
+}
+.mymasthead .mymasthead-heading {
+  font-size: 2.25rem;
+  line-height: 2.25rem;
+  padding-bottom: 0.5rem;
+}
+.mypage-section {
+  padding: 2rem 0;
+}
+.mypage-section .mypage-section-heading {
+  font-size: 1.75rem;
+  line-height: 1.75rem;
+  padding-bottom: 1rem;
+}
+
 
 a:hover {
   color: #000000;
@@ -93,4 +116,14 @@ a:hover {
   transition: all 0.2s ease-in-out;
   opacity: 0;
   background-color: rgba(194, 175, 137, 0.9);
+}
+
+.tablecaption {
+  caption-side: top;
+  text-align: center !important;
+  color: var(--table-border-color);
+  text-decoration: underline;
+}
+.mytable-bordered {
+    border: 3px solid var(--table-border-color);
 }
