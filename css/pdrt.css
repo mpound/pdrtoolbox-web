@@ -75,6 +75,21 @@
   padding-bottom: 1rem;
 }
 
+.mya {
+    color:#ffd000;
+}
+
+.myp {
+  text-align:left;
+  white-space:normal;
+}
+
+code {
+  font-size: 87.5%;
+  font-weight: bold;
+  color: #eeeeee;
+  word-wrap: break-word;
+}
 
 a:hover {
   color: #000000;
