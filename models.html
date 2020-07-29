@@ -22,18 +22,18 @@
             <div class="container d-flex flex-column">
                 <!-- Masthead Subheading-->
                 <p class="pre-wrap mymasthead-heading font-weight-bold mb-0">The Models</p>
-                <p style="text-align:left; white-space:normal;">
+                <p class="myp">
 
                 The models are based on the work of 
-                <a class="yellowtext" href="http://adsbit.harvard.edu/cgi-bin/nph-iarticle_query?1985ApJ...291..722T">Tielens &amp; Hollenbach 1985;</a> 
-                <a class="yellowtext" href="http://adsbit.harvard.edu/cgi-bin/nph-iarticle_query?1990ApJ...358..116W">
+                <a class="mya" href="http://adsbit.harvard.edu/cgi-bin/nph-iarticle_query?1985ApJ...291..722T">Tielens &amp; Hollenbach 1985;</a> 
+                <a class="mya" href="http://adsbit.harvard.edu/cgi-bin/nph-iarticle_query?1990ApJ...358..116W">
                 Wolfire et al. 1990;
                 </a>
-                <a class="yellowtext" href='http://adsbit.harvard.edu/cgi-bin/nph-iarticle_query?1991ApJ...377..192H'>
+                <a class="mya" href='http://adsbit.harvard.edu/cgi-bin/nph-iarticle_query?1991ApJ...377..192H'>
                 Hollenbach et al. 1991;
                 </a>
-                <a class="yellowtext" href="http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=1999ApJ...527..795K">Kaufman et al. 1999</a>; 
-                and <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2006ApJ...644..283K/abstract">Kaufman et al. 2006</a>.
+                <a class="mya" href="http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=1999ApJ...527..795K">Kaufman et al. 1999</a>; 
+                and <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2006ApJ...644..283K/abstract">Kaufman et al. 2006</a>.
 
                  For a given set of gas phase elemental abundances and grain properties,
                  each model is described by a constant H nucleus number density,
@@ -56,16 +56,16 @@
                 <span class="math notranslate nohighlight">\(A_v = 10\)</span>. The constant thermal pressure ModelSets present the intensity ratios as a function of 
                 <span class="math notranslate nohighlight">\(G_0\)</span> 
                 and thermal pressure <span class="math notranslate nohighlight">\(P_{th}\)</span>.
-                PDR Toolbox will also support <a class="yellowtext" href="#alternate">importing the external models of your choice</a>, provided they are stored in the right format.
+                PDR Toolbox will also support <a class="mya" href="#alternate">importing the external models of your choice</a>, provided they are stored in the right format.
                 </p>
-<p style="text-align:left; white-space:normal;">
+<p class="myp">
 The ratio plots are used to determine the beam averaged values of 
 <span class="math notranslate nohighlight">\(G_0\)</span> and <span class="math notranslate nohighlight">\(n\)</span>. 
 Note that <span class="math notranslate nohighlight">\(n\)</span> is the H nucleus density (cm<sup>-3</sup>.
 so that the maximum abundance of H<sub>2</sub>, for example, is 
 <span class="math notranslate nohighlight">\(n(H_2)= 0.5 n\)</span>). 
 The values of <span class="math notranslate nohighlight">\(G_0\)</span> and <span class="math notranslate nohighlight">\(n\)</span> 
-are obtained by <a class="yellowtext" href="http://pdrtpy.readthedocs.io">fitting the observations to the model space.</a>
+are obtained by <a class="mya" href="http://pdrtpy.readthedocs.io">fitting the observations to the model space.</a>
 Required are at least 
 two observations of line intensity ratios or 
 one line intensity ratio and the ratio of the [C II] + [O I]
@@ -77,7 +77,7 @@ a diagnostic plot combining the [C II]/[O I] and ([C II]+[O I])/FIR
 ratios as in Wolfire, Tielens, &amp; Hollenbach 1990. 
 -->
 </p>
-<p style="text-align:left; white-space:normal;">
+<p class="myp">
 It is important
 to correct for the different area filling factors for various species. 
 For example, diffuse [C II] emission may fill the observing beam whereas
@@ -103,29 +103,29 @@ equivalently the model values should be divided by 2).
             <div class="col-lg-7 ml-auto">
 
         <h4>2006 Models</h4>
-        <p  style="text-align:left; white-space:normal;">
+        <p  class="myp">
         These models are identical to those available in the "classic" web-based PDR Toolbox.  They have metallicity <span class="math">\(Z=1\)</span>, 
 and contain [C I], [C II], [O I], Fe, Si, H<sub>2</sub> lines and the <sup>12</sup>CO ladder up to <span class="math">\(J=14\rightarrow 13\)</span>. For some lines,  <span class="math">\(Z=3\)</span> is also available.
-        </p><p  style="text-align:left; white-space:normal;">
-        In <a class="yellowtext" href="https://pdrtpy.readthedocs.io">pdrtpy</a>, these are referred to as the <i>wk2006</i> ModelSet.
+        </p><p  class="myp">
+        In <a class="mya" href="https://pdrtpy.readthedocs.io">pdrtpy</a>, these are referred to as the <i>wk2006</i> ModelSet.
         </p>
 
         <h4>2020 Models</h4>
-                    <p style="text-align:left; white-space:normal;">
+                    <p class="myp">
                     These model data start with the 2006 PDR model code and add improved physics and chemistry. Critical updates include those discussed in
-                    <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2016ApJ...826..183N/abstract">Neufeld &amp; Wolfire 2016</a>, plus photo rates from
-                    <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2017A%26A...602A.105H/abstract">Heays et al. 2017</a>, oxygen chemistry rates from
-                    <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2018ApJ...856..100K/abstract">Kovalenko et al. 2018</a> and
-                    <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2018ApJ...854...25T/abstract">Tran et al. 2018</a>,
+                    <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2016ApJ...826..183N/abstract">Neufeld &amp; Wolfire 2016</a>, plus photo rates from
+                    <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2017A%26A...602A.105H/abstract">Heays et al. 2017</a>, oxygen chemistry rates from
+                    <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2018ApJ...856..100K/abstract">Kovalenko et al. 2018</a> and
+                    <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2018ApJ...854...25T/abstract">Tran et al. 2018</a>,
                     and carbon chemistry rates from
-                    <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2019MNRAS.487.3427D/abstract">Dagdigian 2019</a>. We have also implemented new collisional
+                    <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2019MNRAS.487.3427D/abstract">Dagdigian 2019</a>. We have also implemented new collisional
                     excitation rates for [O I] from
-                    <a class="yellowtext" href="https://ui.adsabs.harvard.edu/abs/2018MNRAS.474.2313L/abstract">Lique et al. 2018</a> (and Lique private
+                    <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2018MNRAS.474.2313L/abstract">Lique et al. 2018</a> (and Lique private
                     communication) and have included <sup>13</sup>C chemistry along with the
                     emitted line intensities for  [<sup>13</sup>C II] and <sup>13</sup>CO.  In Box 1, we show the currently available spectral lines and those we expect to deploy later in the project. In addition, we will compute ModelSets for a full range of metallicity <span class="math">\(Z\)</span>.
                     </p>
-                    </p><p style="text-align:left; white-space:normal;">
-                    In <a class="yellowtext" href="https://pdrtpy.readthedocs.io">pdrtpy</a>, these are referred to as the <i>wk2020</i> ModelSet.  As of August 2020, we are still computing these models and make subsets available in <a class="yellowtext" href="https://pdrtpy.readthedocs.io">pdrtpy</a> as they become ready for use.
+                    </p><p class="myp">
+                    In <a class="mya" href="https://pdrtpy.readthedocs.io">pdrtpy</a>, these are referred to as the <i>wk2020</i> ModelSet.  As of August 2020, we are still computing these models and make subsets available in <a class="mya" href="https://pdrtpy.readthedocs.io">pdrtpy</a> as they become ready for use.
                     </p>
                 </div><!-- col-->
                 <div class="col-lg-5 ml-auto">
@@ -137,9 +137,9 @@ and contain [C I], [C II], [O I], Fe, Si, H<sub>2</sub> lines and the <sup>12</s
             </div> <!-- row -->
 
         <h4>Model Parameters</h4>
-        <p style="text-align:left; white-space:normal;">
-        Our <a class="yellowtext" href="#2006">2006 models</a> use the standard parameters from <a class="yellowtext" href="http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=1999ApJ...527..795K">Kaufman et al. 1999</a>.   Changes for the
-        <a class="yellowtext" href="#2020">2020 models</a> are listed below.
+        <p class="myp">
+        Our <a class="mya" href="#2006">2006 models</a> use the standard parameters from <a class="mya" href="http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=1999ApJ...527..795K">Kaufman et al. 1999</a>.   Changes for the
+        <a class="mya" href="#2020">2020 models</a> are listed below.
         The formation rate of H<sub>2</sub> goes as 
         <span class="math notranslate nohighlight">\(R_{form}~n_{HI}~n\)</span>.
         The PAH abundance <span class="math notranslate nohighlight">\(X_{PAH}=n_{PAH}/n\)</span>.
@@ -295,12 +295,12 @@ and contain [C I], [C II], [O I], Fe, Si, H<sub>2</sub> lines and the <sup>12</s
                 <div class="text-center">
                     <h2 class="mypage-section-heading d-inline-block text-white">Using Alternate Models</h2>
                 </div>
-<p style="text-align:left; white-space:normal;">
+<p class="myp">
 This feature is not fully implemented yet, but it can be used
 with a little extra work on your part.  To be imported in
 to PDRT, model files must be in FITS format and must follow <a
-class="yellowtext" href="docs/PDRT_Model_Standards.pdf"> our given standards.</a>
-If you would like to try and use alternate models, please <a class="yellowtext" href="mailto:mpound@umd.edu">contact Marc Pound.</a>
+class="mya" href="docs/PDRT_Model_Standards.pdf"> our given standards.</a>
+If you would like to try and use alternate models, please <a class="mya" href="mailto:mpound@umd.edu">contact Marc Pound.</a>
 </p>
 
     </div>
