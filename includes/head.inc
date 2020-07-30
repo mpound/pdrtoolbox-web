@@ -10,12 +10,12 @@
     <script src="https://use.fontawesome.com/824d9b17ca.js"></script>
     <!-- Core theme CSS (includes Bootstrap)-->
     <!-- from https://startbootstrap.com/themes/freelancer/-->
-    <link href="freelancer/css/styles.css" rel="stylesheet">
+    <link href="/freelancer/css/styles.css" rel="stylesheet">
     <!-- Fonts CSS-->
     <!-- from https://startbootstrap.com/themes/freelancer/-->
-    <link rel="stylesheet" href="freelancer/css/heading.css">
-    <link rel="stylesheet" href="freelancer/css/body.css">
+    <link rel="stylesheet" href="/freelancer/css/heading.css">
+    <link rel="stylesheet" href="/freelancer/css/body.css">
 
     <!-- PDRT specific CSS -->
-    <link href="css/pdrt.css" rel="stylesheet">
+    <link href="/css/pdrt.css" rel="stylesheet">
 </head>

@@ -139,6 +139,18 @@ a:hover {
   color: var(--table-border-color);
   text-decoration: underline;
 }
+.mytable {
+  color: #000000;
+}
+.mytable th,
+.mytable td {
+  padding: 0.75rem;
+  vertical-align: middle;
+  border-top: 0.125rem solid #dee2e6;
+}
+.mytable a {
+    color:var(--secondary);
+}
 .mytable-bordered {
     border: 3px solid var(--table-border-color);
 }

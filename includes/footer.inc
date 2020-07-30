@@ -18,12 +18,12 @@
                     <!-- Footer LOGOS-->
                     <div class="col-lg-1 mb-5 mb-lg-0">
                         <a class="btn btn-outline-light btn-social mx-1" href="https://www.umd.edu" title="University of Maryland">
-                        <img class="p-3" src="images/New_UMD_Globe_small.png" width="100px" alt="UMD logo">
+                        <img class="p-3" src="/images/New_UMD_Globe_small.png" width="100px" alt="UMD logo">
                         </a>
                     </div>
                     <div class="col-lg-1 mb-5 mb-lg-0">
                      <a class="btn btn-outline-light btn-social mx-1 p-3" href="http://www.nasa.gov" title="NASA">
-                     <img class="p-3" src="images/nasa-logo-web-rgb.png" width="120px" alt="NASA logo">
+                     <img class="p-3" src="/images/nasa-logo-web-rgb.png" width="120px" alt="NASA logo">
                      </a>
                     </div>
                 </div>

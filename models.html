@@ -3,16 +3,15 @@
 <html lang="en">
 <!--#include virtual="includes/head.inc" -->
     <body id="page-top">
-<!--#include virtual="includes/nav.inc" -->
         <nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
             <div class="container"><a class="navbar-brand js-scroll-trigger" href="#page-top">PhotoDissociation Region Toolbox</a>
                 <button class="navbar-toggler navbar-toggler-right font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu <i class="fas fa-bars"></i></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="index.html">HOME</a>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="tools.html">TOOLS</a>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/index.html">HOME</a>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/tools.html">TOOLS</a>
                         </li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="docs.html">DOCUMENTS</a>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/docs.html">DOCUMENTS</a>
                         </li>
                     </ul>
                 </div>
@@ -104,7 +103,8 @@ equivalently the model values should be divided by 2).
 
         <h4>2006 Models</h4>
         <p  class="myp">
-        These models are identical to those available in the "classic" web-based PDR Toolbox.  They have metallicity <span class="math">\(Z=1\)</span>, 
+<a class="mya" href="/models/wk2006/index.html">These models</a> 
+        are identical to those available in the "classic" web-based PDR Toolbox.  They have metallicity <span class="math">\(Z=1\)</span>, 
 and contain [C I], [C II], [O I], Fe, Si, H<sub>2</sub> lines and the <sup>12</sup>CO ladder up to <span class="math">\(J=14\rightarrow 13\)</span>. For some lines,  <span class="math">\(Z=3\)</span> is also available.
         </p><p  class="myp">
         In <a class="mya" href="https://pdrtpy.readthedocs.io">pdrtpy</a>, these are referred to as the <i>wk2006</i> ModelSet.
@@ -136,16 +136,19 @@ and contain [C I], [C II], [O I], Fe, Si, H<sub>2</sub> lines and the <sup>12</s
                 </div> <!-- col-->
             </div> <!-- row -->
 
+<a name="parameters">
+
         <h4>Model Parameters</h4>
         <p class="myp">
-        Our <a class="mya" href="#2006">2006 models</a> use the standard parameters from <a class="mya" href="http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=1999ApJ...527..795K">Kaufman et al. 1999</a>.   Changes for the
+        Our 
+<a class="mya" href="/models/wk2006/index.html">2006 models</a> 
+use the standard parameters from <a class="mya" href="http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=1999ApJ...527..795K">Kaufman et al. 1999</a>.   Changes for the
         <a class="mya" href="#2020">2020 models</a> are listed below.
         The formation rate of H<sub>2</sub> goes as 
         <span class="math notranslate nohighlight">\(R_{form}~n_{HI}~n\)</span>.
         The PAH abundance <span class="math notranslate nohighlight">\(X_{PAH}=n_{PAH}/n\)</span>.
         <!-- Gas Phase abundances of C, O, Si, S, Fe, Mg are from Savage &amp; Sembach 1996 -->
         </p>
-        <a name="2006">
 
     <table class="table table-striped" bgcolor="white">
         <caption class="tablecaption"><h6>Parameters for 2006 Models</h6></caption>
@@ -305,7 +308,7 @@ If you would like to try and use alternate models, please <a class="mya" href="m
 
     </div>
     </section>
-<!--#include virtual="includes/footer.inc" -->
+<!--#include virtual="/includes/footer.inc" -->
 
     </body>
 </html>
