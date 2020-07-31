@@ -13,7 +13,7 @@
   --gray: #6c757d;
   --gray-dark: #343a40;
   --primary: #ac925e;
-  --secondary: #233349;
+  --secondary: #203041;
   --yecondary: #233349;
   --xecondary: #343148;
   --ternary: #4b568a;
@@ -76,12 +76,18 @@
 }
 
 .mya {
-    color:#ffd000;
+    /*color:#ffd000;*/
+    /*color:#332233; /*meets AAA accessibility contrast*/
+    color:var(--secondary); /*meets AA accessibility contrast, matches color scheme*/
+
 }
 
 .myp {
   text-align:left;
   white-space:normal;
+  /*text-color:#1c1c1c;*//*better for accessibility contrast*/
+  /*color:#1c1c1c;*//*better for accessibility contrast*/
+
 }
 
 code {

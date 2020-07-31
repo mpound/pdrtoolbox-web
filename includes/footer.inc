@@ -4,11 +4,11 @@
                     <!-- Footer Social Icons-->
                     <div class="col-lg-4 mb-5 mb-lg-0">
                         <a class="btn btn-outline-light btn-social mx-1" href="https://github.com/mpound/pdrtpy">
-                        <i class="fab fa-fw fa-github" title="Visit us on Github"></i></a>
+                        <i class="fab fa-fw fa-github" title="Visit us on Github" alt="Visit us on Github"></i></a>
 
-                        <a class="btn btn-outline-light btn-social mx-1" href="https://pdrtpy.readthedocs.io" title="Visit us on ReadTheDocs">
+                        <a class="btn btn-outline-light btn-social mx-1" href="https://pdrtpy.readthedocs.io" title="Visit us on ReadTheDocs" alt="Visit us on ReadTheDocs">
                         <i class="fa fa-fw fa-book"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="https://www.umd.edu/web-accessibility" title="UMD Web Accessibility">
+                        <a class="btn btn-outline-light btn-social mx-1" href="https://www.umd.edu/web-accessibility" title="UMD Web Accessibility" alt="UMD Web Accessibility">
                         <i class="fa fa-fw fa-universal-access"></i></a>
                     </div>
                     <!-- Footer Location-->
