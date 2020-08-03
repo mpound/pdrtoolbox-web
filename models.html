@@ -36,23 +36,22 @@
 
                  For a given set of gas phase elemental abundances and grain properties,
                  each model is described by a constant H nucleus number density,
-                <span class="math">\(n\)</span>,
+                <span class="math">\(n\)</span>, or constant thermal pressure,
+                <span class="math">(\P_{th}\)</span>,
                 and incident far-ultraviolet intensity 
                 <span class="math">\(G_0\)</span>. 
                  The models solve for the
-                 equilibrium chemistry, thermal balance, and radiation transfer through
+                 chemical balance, thermal equilibrium, and radiation transfer through
                  a PDR layer. Our treatment updates previous results
                  to use recent values of atomic and molecular data, current chemical
-                 rate coefficients, and grain photolectric heating rates which include
-                 treatments of small grains and large molecules.
+                 rate coefficients, and grain photolectric heating rates.
 
                 The are a number model data sets ("ModelSets") currently available in PDR Toolbox.
-                The ModelSets come in two basic flavors: constant extinction and constant thermal pressure. The constant extinction ModelSets present spectral line and continuum intensity ratios 
+                The ModelSets come in two basic flavors: constant density and constant thermal pressure. The constant density ModelSets present spectral line and continuum intensity ratios 
                 as a function of 
                 <span class="math notranslate nohighlight">\(G_0\)</span> and 
-                <span class="math notranslate nohighlight">\(n\)</span> 
-                for visual extinctions up to 
-                <span class="math notranslate nohighlight">\(A_v = 10\)</span>. The constant thermal pressure ModelSets present the intensity ratios as a function of 
+                <span class="math notranslate nohighlight">\(n\)</span>. 
+ The constant thermal pressure ModelSets present the intensity ratios as a function of 
                 <span class="math notranslate nohighlight">\(G_0\)</span> 
                 and thermal pressure <span class="math notranslate nohighlight">\(P_{th}\)</span>.
                 PDR Toolbox will also support <a class="mya" href="#alternate">importing the external models of your choice</a>, provided they are stored in the right format.
@@ -78,9 +77,9 @@ ratios as in Wolfire, Tielens, &amp; Hollenbach 1990.
 </p>
 <p class="myp">
 It is important
-to correct for the different area filling factors for various species. 
+to correct for the different beam area filling factors for various species. 
 For example, diffuse [C II] emission may fill the observing beam whereas
-[O I] emission may arise from a smaller, high density and temperature
+[O I] emission may arise from a smaller, high density and high temperature
 region. In such a case, it would not be appropriate to take the ratio
 of observed fluxes for fitting. Instead the ratio of intensities
 should be used or the ratio of fluxes corrected for the separate emitting
