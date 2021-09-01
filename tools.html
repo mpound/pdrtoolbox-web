@@ -20,24 +20,66 @@
         <header class="mymasthead bg-primary text-white text-center">
             <div class="container d-flex flex-column">
                 <!-- Masthead Subheading-->
-                <p class="pre-wrap mymasthead-heading font-weight-bold mb-0">The Tools</p>
+                <p class="pre-wrap mymasthead-heading font-weight-bold mb-0">Tools &amp; Notebooks</p>
                 <p class="myp">
-                    The PDR Toolbox is implemented as a Python package, hosted at <a class="mya" href="https://pypi.org/project/pdrtpy">pypi.org</a> and installable with pip (<code>pip install pdrtpy</code>). 
-            Full documentation is available <a class="mya" href="https://pdrtpy.readthedocs.io/en/latest/">online</a>; we have created <a class="mya" href="https://github.com/mpound/pdrtpy-nb">example notebooks</a>; and <a class="mya" href="https://github.com/mpound/pdrtpy">the code itself on github.</a>
-                     The main tool in the Toolbox is <a class="mya" href="https://pdrtpy.readthedocs.io/en/latest/pdrtpy.tool.html#lineratiofit">LineRatioFit</a> which is used to determine H density <span class="math">\(n\)</span> and radiation field <span class="math">\(G_0\)</span> from your observations.  Observations can be single pixel or maps and are represented in <code>pdrtpy</code> as <a class="mya" href="https://pdrtpy.readthedocs.io/en/latest/pdrtpy.measurement.html">Measurements</a>.  The best way to learn how to use <code>pdrtpy</code> is to install it and work through the notebooks.
-            We suggest you do the notebooks in this order:
-            <ul>
-                <li class="myp">PDRT_Example_Measurements.ipynb</li>
-                <li class="myp">PDRT_Example_ModelSets.ipynb</li>
-                <li class="myp">PDRT_Example_Model_Plotting.ipynb</li>
-                <li class="myp">PDRT_Example_Find_n_G0_Single_Pixel.ipynb</li>
-                <li class="myp">PDRT_Example_Make_n_G0_maps.ipynb</li>
-            </ul>
-            </p>
+                    The PDR Toolbox is implemented as a Python package, hosted at <a class="mya" href="https://pypi.org/project/pdrtpy">pypi.org</a> and installable with pip (<code>pip install pdrtpy</code>).   Below is a list of the main tools in the Toolbox.
+            Full documentation is available <a class="mya" href="https://pdrtpy.readthedocs.io/en/latest/">online</a>. We have created <a class="mya" href="https://github.com/mpound/pdrtpy-nb">example notebooks</a> and <a class="mya" href="https://github.com/mpound/pdrtpy">the code itself on github.</a>  We welcome contributions and ideas to improve the PDR Toolbox! 
+Please look at our <a class="mya" href="https://github.com/mpound/pdrtpy/blob/stable_release/roadmap.md">Roadmap of Functionality</a> to see the main new features we want to build. You can help out with those or suggest new features.
+If you have any questions, head on over to <a class="mya" href="https://groups.google.com/g/pdrt">the PDR Toolbox discussion forum.</a>
+</p>
             </div>
         </header>
+
       <section class="mypage-section bg-primary text-white mb-0" id="classic">
         <div class="container">
+                <div class="text-center">
+                    <h2 class="mypage-section-heading d-inline-block text-white">
+        List of Tools</h2>
+                </div>
+                <p class="myp">
+                <ul>
+                <li class="myp">
+                     <a class="mya" href="https://pdrtpy.readthedocs.io/en/latest/pdrtpy.tool.html#lineratiofit"><i>LineRatioFit</i></a> is used to determine H volume density <span class="math">\(n\)</span> and radiation field <span class="math">\(F_{UV}\)</span> from your observations.  Observations can be single pixel or maps and are represented in <code>pdrtpy</code> as <a class="mya" href="https://pdrtpy.readthedocs.io/en/latest/pdrtpy.measurement.html">Measurements</a>.  
+</li>
+                <li class="myp">
+                     <a class="mya" href="https://pdrtpy.readthedocs.io/en/latest/pdrtpy.plot.html#lineratioplot"><i>LineRatioPlot</i></a> plots the results of <i>LineRatioFit</i>.  It can plot maps of fit results, observations with errors on top of models, chi-square and confidence intervals and more.
+                </li>
+                <li class="myp">
+<a class="mya" href="https://pdrtpy.readthedocs.io/en/latest/pdrtpy.tool.html#excitation-diagram-fitting">
+<i>H2ExcitationFit</i></a> is a tool for fitting temperature, column density, and ortho-to-para ratio in H<sub>2</sub> excitation diagrams. A two temperature model is assumed, and the fit will find warm and cold gas temperatures and column densities,
+ and optionally ortho-to-para ratio. The base class <i>ExcitationFit</i> can be used to create a tool to fit a different molecule.
+                </li>
+                <li class="myp"><a class="mya" href="https://pdrtpy.readthedocs.io/en/latest/pdrtpy.plot.html#excitationplot"><i>ExcitationPlot</i></a> creates excitation diagrams using the results of <i>H2ExcitationFit</i>. It can plot the observed excitation diagram with or without fit results, and allows averaging over user-given spatial areas.
+                </li>
+                <li class="myp"><a class="mya" href="https://pdrtpy.readthedocs.io/en/latest/pdrtpy.plot.html#modelplot"> <i>ModelPlot</i></a> is a tool for exploring sets of models.  It can plot individual intensity or ratio models, phase-space diagrams, and optionally overlay observations.   Units are seamlessly transformed, so you can plot in Habing units, Draine units, or any conformable quantity.
+               </li>
+               </ul>
+                </p>
+        </div>
+      </section>
+
+    <section  class="mypage-section bg-primary text-white mb-0" id="classic">
+        <div class="container">
+            <p class="myp">
+                <div class="text-center">
+                 <h2 class="mypage-section-heading d-inline-block text-white">
+                Example Jupyter Notebooks</h2></div>
+        The best way to learn how to use <code>pdrtpy</code> is to install it and work through the notebooks.
+                    We suggest you do the notebooks in this order:
+                    <ul>
+                        <li class="myp">PDRT_Example_Measurements.ipynb</li>
+                        <li class="myp">PDRT_Example_ModelSets.ipynb</li>
+                        <li class="myp">PDRT_Example_Model_Plotting.ipynb</li>
+                        <li class="myp">PDRT_Example_Find_n_G0_Single_Pixel.ipynb</li>
+                        <li class="myp">PDRT_Example_Make_n_G0_maps.ipynb</li>
+                        <li class="myp">PDRT_Example_H2_Excitation.ipynb</li>
+                    </ul>
+            </p>
+        </div>
+    </section>
+      <section class="mypage-section bg-primary text-white mb-0" id="classic">
+        <div class="container">
+       
                 <div class="text-center">
                     <h2 class="mypage-section-heading d-inline-block text-white">
         What About the Web-based PDRT?</h2>
