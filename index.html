@@ -22,7 +22,8 @@
             </div>
         </div>
     </nav>
-        <header class="masthead bg-primary text-white text-center">
+        <header class="masthead bg-primary text-white">
+<div class="text-center">
 <br>
             <div class="container d-flex align-items-center flex-column">
                 <!-- Masthead Avatar Image--><img class="masthead-avatar mb-5" src="images/ngc3603_blue2.png" alt="NGC 3603 PDR region">
@@ -57,12 +58,34 @@ Given a set of observations of spectral line or continuum intensities, PDR Toolb
 incident intensity and cloud density based on our models of PDR emission. 
 One can also fit <i>H<sub>2</sub></i> rovibrational emission excitation diagrams to determine temperature and column density.
 </p>
-<h4>The current version is <a class="mya" href="https://pdrtpy.readthedocs.io/en/latest/">2.1.1</a> (released August 24, 2021)</h4>
+<h4>The current version is <a class="mya" href="https://pdrtpy.readthedocs.io/en/latest/">2.2.3</a> (released Feb 1, 2022)</h4>
 <hr width="50%">
-<h4> <span style="color:#bb2233;">Coming Soon:</span> KOSMA-tau PDR models</h4>
+<h4>New Release Highlights</h4>
+</div>
+<div class="container">
+ <div class="row text-left">
+ <div class="col-md">
+<ul>
+<li><h6>Updated and expanded Wolfire-Kaufman models</h6>
+<p class="myp">The 2020 WK model set includes updated physics and more CO, H<sub>2</sub>, and Fe II lines</p>
+</li>
+<li><h6>KOSMA-tau PDR models</h6>
 <p class="myp">
-An upcoming release of <a class="mya" href="http://pdrtpy.readthedocs.io">pdrtpy</a> will include <a class="mya" href="https://astro.uni-koeln.de/stutzki/research/kosma-tau">KOSMA-tau</a> PDR models for both clumpy and non-clumpy media.  This will provide users the ability to easily compare their observations to models from different PDR codes using the dandy tools in the PDR Toolbox.
+We now include <a class="mya" href="https://astro.uni-koeln.de/stutzki/research/kosma-tau">KOSMA-tau</a> PDR models for both clumpy and non-clumpy media.  This will provide users the ability to easily compare their observations to models from different PDR codes using the dandy tools in the PDR Toolbox.
 </p>
+</li>
+<li><h6>H<sub>2</sub> excitation diagram fitting</h6>
+<p class="myp">
+The H<sub>2</sub> excitation fitting tool will create of maps of temperature, column density, and ortho-to-para ratio from observations.
+</p>
+</li>
+<li><h6>Improved fitting of observations to models</h6>
+<p class='myp'>All fitting now uses the <a class="mya" href="https://lmfit.github.io/lmfit-py/">LMFIT package</a>, allowing users to choose the fitting method (e.g., least-squares, MCMC) and giving them more details on quality of fit.</p>
+</li>
+</ul>
+  </div>
+ </div>
+</div>
 <hr width="50%">
 <h6>Please remember to <a class="mya" href="#about">cite use</a> of the PDR Toolbox!</h6>
 <h6>And please join our <a class="mya" href="https://groups.google.com/g/pdrt">discussion forum.</a></h6>
@@ -75,8 +98,8 @@ An upcoming release of <a class="mya" href="http://pdrtpy.readthedocs.io">pdrtpy
                 <!-- Masthead Subheading-->
                 <p class="pre-wrap masthead-subheading font-weight-light mb-0">Reliable Astrophysics at Everyday Low, Low Prices!  &#174;</p>
             </div>
-        </header>
 
+</header>
         <section class="page-section portfolio" id="portfolio">
             <div class="container">
                 <!-- Portfolio Section Heading-->
