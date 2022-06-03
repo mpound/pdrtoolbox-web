@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+ <!-- head info -->
+<!--#include virtual="/includes/head.inc" -->
+
+    <body id="page-top">
+        <!-- Navigation-->
+
+    <nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
+        <div class="container"><a class="navbar-brand js-scroll-trigger" href="#page-top">PhotoDissociation Region Toolbox</a>
+            <button class="navbar-toggler navbar-toggler-right font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu<i class="fas fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/index.html">HOME</a>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/tools.html">TOOLS</a>
+                        </li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/models.html">MODELS</a>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/docs.html">DOCUMENTS</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+        <header class="mymasthead bg-primary text-white text-center">
+            <div class="container d-flex flex-column">
+                <!-- Masthead Subheading-->
+                <h1 class="pre-wrap mymasthead-heading font-weight-bold mb-0">
+{{modelset.header}} models</h1>
+                <p class="myp">
+Below are links to the individual FITS files
+and plots in the <i>{{modelset.name}}</i> <a class="mya"
+href="https://pdrtpy.readthedocs.io/en/latest/pdrtpy.modelset.html">ModelSet</a>. We also provide a <a class="mya" href={{modelset.tarball}}">gzipped tarball</a> of all the <i>{{modelset.name}}</i> FITS files.
+
+<table  class="table mytable table-striped table-striped table-bordered" bgcolor="white" >
+{{table_contents}}
+</table>
+        </p> 
+        </div>
+        </header>
+<!--#include virtual="/includes/footer.inc" -->
+
+    </body>
+</html>
