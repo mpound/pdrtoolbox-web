@@ -12,11 +12,11 @@ class Page():
         # check all models.tab files and existence of all therein
         t = ModelSet.all_sets()
         
-        if True:
+        if False:
             for name,metallicity,medium,mass in zip(list(t["name"]),list(t["z"]),list(t["medium"]),list(t["mass"])):
                 self.process_modelset(name,metallicity,medium,mass)
         else:
-            with Pool(4) as pool:
+            with Pool(6) as pool:
                 pool.starmap(self.process_modelset,zip(list(t["name"]),list(t["z"]),list(t["medium"]),list(t["mass"])))
 
     def process_modelset(self,n,z,md,m):
@@ -88,6 +88,7 @@ class Page():
                     print(f"############ OOPS missed some latex {model._title}")
                 fig_out = f'{dir}/{modelfile}.png'
                 fig_html = f'{dir}/{modelfile}.html'
+                fits_out = f'{dir}/{modelfile}.fits'
                 f_html = f'{modelfile}.html'
                 table_contents += f'<td><a href="{f_html}">{model._title}</a></td>'
                 mdict[r] = fig_html
@@ -101,6 +102,7 @@ class Page():
                     mp.plot(r,yaxis_unit="Habing",label=True, legend=False,
                             norm="zscale",cmap='plasma')
                 mp.savefig(f'{base_dir}/{fig_out}')
+                model.write(f'{base_dir}/{fits_out}')
                 # This is supposed to stop complaints about 
                 # too many figures, but actually does not!
                 mp._plt.close(mp.figure) 
