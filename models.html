@@ -11,6 +11,15 @@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/index.html">HOME</a>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/tools.html">TOOLS</a>
                         </li>
+        <li class="nav-item dropdown mx-0 mx-lg-1">
+          <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded" href="#" id="navbarDarkDropdownMenuLink" role="button" data-toggle="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            MODELS
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+            <li><a class="dropdown-item" href="models.html">PDR Code Descriptions</a></li>
+            <li><a class="dropdown-item" href="available.html">Model Plots &amp; FITS Files</a></li>
+          </ul>
+        </li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/docs.html">DOCUMENTS</a>
                         </li>
                     </ul>
@@ -20,26 +29,34 @@
         <header class="mymasthead bg-primary text-white text-center">
             <div class="container d-flex flex-column">
                 <!-- Masthead Subheading-->
-                <h1 class="pre-wrap mymasthead-heading font-weight-bold mb-0">The Models</h1>
+                <h1 class="pre-wrap mymasthead-heading font-weight-bold mb-0">PDR Model Codes Used in the Toolbox</h1>
+<br>
 <div class="row mxauto">
  <div class="col p3"></div>
  <div class="col p3">
+<button type="button" class="btn btn-light">
  <a class="mya" href="#wolfirekaufman">Wolfire/Kaufman</a>
+</button>
  </div>
  <div class="col p3">
+<button type="button" class="btn btn-light">
 <a class="mya" href="#kosmatau">KOSMA-tau</a>
+</button>
  </div>
  <div class="col p3">
+<button type="button" class="btn btn-light">
  <a class="mya" href="#alternate">Bring Your Own</a>
+</button>
  </div>
  <div class="col p3"></div>
 </div>
 <a name="wolfirekaufman">
 <br>
+<hr>
 <h2>Wolfire/Kaufman Models</h2>
                 <p class="myp">
 
-                The Wolfire/Kaufman models are based on the work of 
+                The Wolfire/Kaufman models are primarily based on the work of 
                 <a class="mya" href="http://adsbit.harvard.edu/cgi-bin/nph-iarticle_query?1985ApJ...291..722T">Tielens &amp; Hollenbach 1985;</a> 
                 <a class="mya" href="http://adsbit.harvard.edu/cgi-bin/nph-iarticle_query?1990ApJ...358..116W">
                 Wolfire et al. 1990;
@@ -62,15 +79,17 @@
                  to use recent values of atomic and molecular data, current chemical
                  rate coefficients, and grain photolectric heating rates.
 
-                The are a number model data sets ("ModelSets") currently available in PDR Toolbox.
-                The ModelSets come in two basic flavors: constant density and constant thermal pressure. The constant density ModelSets present spectral line and continuum intensity ratios 
+                There are two versions of the "WK" model data sets ("ModelSets") available: 2006 and 2020.  We recommend you use the 2020 version as they contain updated physics and chemistry.
+                There are a number model data sets ("ModelSets") currently available in PDR Toolbox.
+                The Wolfire/Kaufman constant density ModelSets present spectral line and continuum intensity ratios 
                 as a function of 
                 <span class="math notranslate nohighlight">\(G_0\)</span> and 
                 <span class="math notranslate nohighlight">\(n\)</span>. 
- The constant thermal pressure ModelSets present the intensity ratios as a function of 
+In a future release, we will add 
+ constant thermal pressure ModelSets which present the intensity ratios as a function of 
                 <span class="math notranslate nohighlight">\(G_0\)</span> 
                 and thermal pressure <span class="math notranslate nohighlight">\(P_{th}\)</span>.
-                PDR Toolbox will also support <a class="mya" href="#alternate">importing the external models of your choice</a>, provided they are stored in the right format.
+                The PDR Toolbox can also support <a class="mya" href="#alternate">importing the external models of your choice</a>, provided they are stored in the right format.
                 </p>
 <p class="myp">
 The ratio plots are used to determine the beam averaged values of 
@@ -111,7 +130,7 @@ equivalently the model values should be divided by 2).
       <section class="mypage-section bg-primary text-white mb-0" id="modelspecifics">
         <div class="container">
                 <div class="text-center">
-                    <h2 class="mypage-section-heading d-inline-block text-white">Model Specifics</h2>
+                    <h2 class="mypage-section-heading d-inline-block text-white">WK Model Specifics</h2>
                 </div>
         <div class="row">
             <div class="col-lg-7 ml-auto">
@@ -153,7 +172,7 @@ and contain [C I], [C II], [O I], Fe, Si, H<sub>2</sub> lines and the <sup>12</s
 
 <a name="parameters">
 
-        <h4>Model Parameters</h4>
+        <h4><center>WK Model Parameters</center></h4>
         <p class="myp">
         Our 
 <a class="mya" href="/models/wk2006/index.html">2006 models</a> 
@@ -337,6 +356,8 @@ upper and lower masses are fixed and the total mass is varied.
 For more information about these models, see the 
 <a class="mya" href="https://astro.uni-koeln.de/stutzki/research/kosma-tau">KOSMA-tau website.</a> 
 </p>
+</div>
+</section>
 
 <a name="alternate">
       <section class="mypage-section bg-primary text-white mb-0" id="alternatemodels">
