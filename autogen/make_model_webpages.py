@@ -5,19 +5,44 @@ from multiprocessing import Pool
 import numpy.ma as ma
 import os
 import jinja2
+from copy import deepcopy
+
+
+def init_processes(all_models_instance):
+    global all_models
+    all_models = all_models_instance 
 
 class Page():
+    def __init__(self):
+        self.env=jinja2.Environment(loader=jinja2.FileSystemLoader("."))
+        self.base_dir = "../models"
+        print("initialized")
 
-    def make_page(self):
+    def write_all_models_page(self,all_models):
+        print("WRITING ALL MODELS")
+        # don't instantiate these in __init__ or you get a 
+        # "TypeError: cannot pickle weakref" from Pool.starmap
+        self.allmodelstemplatefile = 'all_models_page_jinja_template.html'
+        self.allmodelstemplate = self.env.get_template(self.allmodelstemplatefile)
+        fh = open(f'{self.base_dir}/all_models.html','w')
+        for key,value in all_models.items():
+            print(key,value)
+        output=self.allmodelstemplate.render(all_models=all_models)
+        fh.write(output)
+        fh.close()
+
+    def make_page(self,all_models):
         # check all models.tab files and existence of all therein
         t = ModelSet.all_sets()
+        z = zip(list(t["name"]),list(t["z"]),list(t["medium"]),list(t["mass"]))
         
-        if False:
-            for name,metallicity,medium,mass in zip(list(t["name"]),list(t["z"]),list(t["medium"]),list(t["mass"])):
+        if True:
+            for name,metallicity,medium,mass in z:
                 self.process_modelset(name,metallicity,medium,mass)
         else:
-            with Pool(6) as pool:
-                pool.starmap(self.process_modelset,zip(list(t["name"]),list(t["z"]),list(t["medium"]),list(t["mass"])))
+            print("pooling...")
+            pool = Pool(os.cpu_count()-2,initializer=init_processes,initargs=(all_models,))
+            pool.starmap(self.process_modelset,z)
 
     def process_modelset(self,n,z,md,m):
         debug = False
@@ -38,35 +63,30 @@ class Page():
 
         success = True
         failed = list()
-        env=jinja2.Environment(loader=jinja2.FileSystemLoader("."))
         pagetemplatefile = 'model_page_jinja_template.html'
-        pagetemplate = env.get_template(pagetemplatefile)
+        pagetemplate = self.env.get_template(pagetemplatefile)
         indextemplatefile = 'index_page_jinja_template.html'
-        indextemplate = env.get_template(indextemplatefile)
-        base_dir = "../models"
+        indextemplate = self.env.get_template(indextemplatefile)
         table_contents = "<tr>"
         mdict = dict()
         ms = ModelSet(name=n,z=z,medium=md,mass=m)
-        ms.tarball = f"/models/{n}_models.tgz"
         if ms.code == 'KOSMA-tau':
-            keyname = "kt2013"
+            ms.keyname = "kt2013"
         else:
-            keyname = n
+            ms.keyname = n
+        ms.tarball = f"/models/{ms.keyname}_models.tgz"
 
-        #if m is not None:
-        #    ms.header = f"{model_title[keyname]}, Z={z}, {md}"
-        #else:
-        #    ms.header = f"{model_title[keyname]}, Z={z}, {md}, M={m} M<sub>&odot;</sub> "
         ms.header = ms.description.replace("$A_V$","A<sub>V</sub>").replace("$R_V$","R<sub>V</sub>").replace("M$_\odot$", "M<sub>&odot;</sub>")
         mp = ModelPlot(ms)
         # stop complaining about too many figures
         mp._plt.rcParams.update({'figure.max_open_warning': 0})
         if m is None or ma.is_masked(m):
-            dir = f'{n}_Z{z}_{md}'
+            ms.dir = f'{n}_Z{z}_{md}'
         else:
-            dir = f'{n}_Z{z}_{md}_M{m}'
-        dir = dir.replace(' ','_')
-        os.mkdir(f'{base_dir}/{dir}')
+            ms.dir = f'{n}_Z{z}_{md}_M{m}'
+        ms.dir = ms.dir.replace(' ','_')
+        os.mkdir(f'{self.base_dir}/{ms.dir}')
+        all_models[ms.dir] = ms.header
 
         i = 0
         numcols = 4
@@ -86,9 +106,9 @@ class Page():
                 #print(f"doing {r} = {modelfile} , {modelfile}.png , title={model._title} CTYPE=[{model.wcs.wcs.ctype[0]},{model.wcs.wcs.ctype[1]}]")
                 if "$" in model._title:
                     print(f"############ OOPS missed some latex {model._title}")
-                fig_out = f'{dir}/{modelfile}.png'
-                fig_html = f'{dir}/{modelfile}.html'
-                fits_out = f'{dir}/{modelfile}.fits'
+                fig_out = f'{ms.dir}/{modelfile}.png'
+                fig_html = f'{ms.dir}/{modelfile}.html'
+                fits_out = f'{ms.dir}/{modelfile}.fits'
                 f_html = f'{modelfile}.html'
                 table_contents += f'<td><a href="{f_html}">{model._title}</a></td>'
                 mdict[r] = fig_html
@@ -101,18 +121,18 @@ class Page():
                 else:
                     mp.plot(r,yaxis_unit="Habing",label=True, legend=False,
                             norm="zscale",cmap='plasma')
-                mp.savefig(f'{base_dir}/{fig_out}')
-                model.write(f'{base_dir}/{fits_out}')
+                mp.savefig(f'{self.base_dir}/{fig_out}')
+                model.write(f'{self.base_dir}/{fits_out}')
                 # This is supposed to stop complaints about 
                 # too many figures, but actually does not!
                 mp._plt.close(mp.figure) 
-                fh = open(f'{base_dir}/{fig_html}','w')
+                fh = open(f'{self.base_dir}/{fig_html}','w')
                 output=pagetemplate.render(model=model,
                                        fitsfilename=f'{modelfile}.fits',
-                                       model_explain=explain[keyname],
+                                       model_explain=explain[ms.keyname],
                                        modelfile=modelfile)
                 fh.write(output)
-                #print(f'{base_dir}/{fig_html}')
+                #print(f'{self.base_dir}/{fig_html}')
                # print(output)
                # print("===========================================")
                 fh.close()
@@ -126,16 +146,18 @@ class Page():
         if not success:
             print("Couldn't open these models:",failed)
         table_contents += '</tr>'
-        fh = open(f'{base_dir}/{dir}/index.html','w')
+        fh = open(f'{self.base_dir}/{ms.dir}/index.html','w')
         output=indextemplate.render(modelset=ms,
                                     table_contents=table_contents)
         
         fh.write(output)
         fh.close()
+        print("models so far:" ,all_models)
 
-    def make_aux_page(self):
-        pass
 
 if __name__ == '__main__':
+    all_models = dict()
     p = Page()
-    p.make_page()
+    p.make_page(all_models)
+    print("DONE WITH MAKEPAGE, allmodels=",all_models)
+    p.write_all_models_page(all_models)
