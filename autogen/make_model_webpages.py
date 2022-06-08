@@ -24,7 +24,7 @@ class Page():
         # "TypeError: cannot pickle weakref" from Pool.starmap
         self.allmodelstemplatefile = 'all_models_page_jinja_template.html'
         self.allmodelstemplate = self.env.get_template(self.allmodelstemplatefile)
-        fh = open(f'{self.base_dir}/all_models.html','w')
+        fh = open(f'{self.base_dir}/index.html','w')
         for key,value in all_models.items():
             print(key,value)
         output=self.allmodelstemplate.render(all_models=all_models)
