@@ -19,8 +19,8 @@
             MODELS
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-            <li><a class="dropdown-item" href="models.html">PDR Code Descriptions</a></li>
-            <li><a class="dropdown-item" href="available.html">Model Plots &amp; FITS Files</a></li>
+            <li><a class="dropdown-item" href="/models.html">PDR Code Descriptions</a></li>
+            <li><a class="dropdown-item" href="/models/index.html">Model Plots &amp; FITS Files</a></li>
           </ul>
         </li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/docs.html">DOCUMENTS</a>
@@ -33,11 +33,15 @@
             <div class="container d-flex flex-column">
                 <!-- Masthead Subheading-->
                 <h1 class="pre-wrap mymasthead-heading font-weight-bold mb-0">
-Links to All Available Models</h1>
+Links to All Available ModelSets</h1>
                 <p class="myp">
+Click on the description to explore a ModelSet (see plots, download FITS files).
+<table  class="table mytable table-striped table-striped table-bordered" bgcolor="white" >
+<tr><th>ModelSet name in <tt><a href="https://pdrtpy.readthedocs.io">pdrtpy</a></tt></th><th>ModelSet Description</th></tr>
 {% for key,value in all_models.items() %}
-<a class="mya" href="{{key}}">{{value}}</a><br>
+<tr><td>{{all_names[key]}}</td><td><a class="mya" href="{{key}}">{{value}}</a><br></td></tr>
 {% endfor %}
+</table>
         </p> 
         </div>
         </header>

@@ -1,47 +1,49 @@
 #!/usr/bin/env python
 from pdrtpy.modelset import ModelSet
 from pdrtpy.plot.modelplot import ModelPlot
-from multiprocessing import Pool
+from multiprocessing import Pool,Manager
 import numpy.ma as ma
 import os
 import jinja2
 from copy import deepcopy
+import argparse
 
-
-def init_processes(all_models_instance):
-    global all_models
-    all_models = all_models_instance 
+def init_processes(l):
+    global lock
+    lock = l
 
 class Page():
     def __init__(self):
         self.env=jinja2.Environment(loader=jinja2.FileSystemLoader("."))
         self.base_dir = "../models"
-        print("initialized")
 
-    def write_all_models_page(self,all_models):
-        print("WRITING ALL MODELS")
+    def write_all_models_page(self,all_models,all_names):
         # don't instantiate these in __init__ or you get a 
         # "TypeError: cannot pickle weakref" from Pool.starmap
         self.allmodelstemplatefile = 'all_models_page_jinja_template.html'
         self.allmodelstemplate = self.env.get_template(self.allmodelstemplatefile)
+        #reverse sort so wolfire/kaufman comes first
+        wkfirst = dict(reversed(sorted(list(all_models.items()))))
+        names = dict(reversed(sorted(list(all_names.items()))))
+        #for key,value in wkfirst.items():
+        #    print(key)
+        output=self.allmodelstemplate.render(all_models=wkfirst,all_names=names)
         fh = open(f'{self.base_dir}/index.html','w')
-        for key,value in all_models.items():
-            print(key,value)
-        output=self.allmodelstemplate.render(all_models=all_models)
         fh.write(output)
         fh.close()
 
-    def make_page(self,all_models):
+    def make_page(self,all_models,all_names,lock,quick=False):
         # check all models.tab files and existence of all therein
         t = ModelSet.all_sets()
         z = zip(list(t["name"]),list(t["z"]),list(t["medium"]),list(t["mass"]))
         
-        if True:
+        if False:
+            print("single threading...")
             for name,metallicity,medium,mass in z:
                 self.process_modelset(name,metallicity,medium,mass)
         else:
             print("pooling...")
-            pool = Pool(os.cpu_count()-2,initializer=init_processes,initargs=(all_models,))
+            pool = Pool(os.cpu_count()-2,initializer=init_processes,initargs=(lock,))
             pool.starmap(self.process_modelset,z)
 
     def process_modelset(self,n,z,md,m):
@@ -67,29 +69,33 @@ class Page():
         pagetemplate = self.env.get_template(pagetemplatefile)
         indextemplatefile = 'index_page_jinja_template.html'
         indextemplate = self.env.get_template(indextemplatefile)
-        table_contents = "<tr>"
-        mdict = dict()
+
         ms = ModelSet(name=n,z=z,medium=md,mass=m)
         if ms.code == 'KOSMA-tau':
             ms.keyname = "kt2013"
         else:
             ms.keyname = n
         ms.tarball = f"/models/{ms.keyname}_models.tgz"
-
         ms.header = ms.description.replace("$A_V$","A<sub>V</sub>").replace("$R_V$","R<sub>V</sub>").replace("M$_\odot$", "M<sub>&odot;</sub>")
-        mp = ModelPlot(ms)
-        # stop complaining about too many figures
-        mp._plt.rcParams.update({'figure.max_open_warning': 0})
         if m is None or ma.is_masked(m):
             ms.dir = f'{n}_Z{z}_{md}'
         else:
             ms.dir = f'{n}_Z{z}_{md}_M{m}'
         ms.dir = ms.dir.replace(' ','_')
+        with lock:
+            all_models[ms.dir] = ms.header
+            all_names[ms.dir] = n
+        if quick: 
+            return
+
         os.mkdir(f'{self.base_dir}/{ms.dir}')
-        all_models[ms.dir] = ms.header
+        mp = ModelPlot(ms)
+        # stop complaining about too many figures
+        mp._plt.rcParams.update({'figure.max_open_warning': 0})
 
         i = 0
         numcols = 4
+        table_contents = "<tr>"
         for r in ms.table["ratio"]:
             if i !=0 and i%numcols == 0:
                 table_contents+="</tr>\n<tr>"
@@ -111,7 +117,6 @@ class Page():
                 fits_out = f'{ms.dir}/{modelfile}.fits'
                 f_html = f'{modelfile}.html'
                 table_contents += f'<td><a href="{f_html}">{model._title}</a></td>'
-                mdict[r] = fig_html
                 i = i+1
                 if model.wcs.wcs.ctype[0] == "T_e":
                     # Iron line ratios are function of electron temperature and electron density
@@ -126,11 +131,11 @@ class Page():
                 # This is supposed to stop complaints about 
                 # too many figures, but actually does not!
                 mp._plt.close(mp.figure) 
-                fh = open(f'{self.base_dir}/{fig_html}','w')
                 output=pagetemplate.render(model=model,
                                        fitsfilename=f'{modelfile}.fits',
                                        model_explain=explain[ms.keyname],
                                        modelfile=modelfile)
+                fh = open(f'{self.base_dir}/{fig_html}','w')
                 fh.write(output)
                 #print(f'{self.base_dir}/{fig_html}')
                # print(output)
@@ -146,18 +151,27 @@ class Page():
         if not success:
             print("Couldn't open these models:",failed)
         table_contents += '</tr>'
-        fh = open(f'{self.base_dir}/{ms.dir}/index.html','w')
         output=indextemplate.render(modelset=ms,
                                     table_contents=table_contents)
         
+        fh = open(f'{self.base_dir}/{ms.dir}/index.html','w')
         fh.write(output)
         fh.close()
-        print("models so far:" ,all_models)
 
 
 if __name__ == '__main__':
-    all_models = dict()
+    parser = argparse.ArgumentParser(description='Process CLI.')
+    parser.add_argument('-q','--quick',help='skip creating plots, just update all_models page',action="store_true")
+    args = parser.parse_args()
+    if args.quick:
+        quick = True
+    else:
+        quick = False
+    manager = Manager()
+    all_models = manager.dict()
+    all_names = manager.dict()
+    lock = manager.Lock()
     p = Page()
-    p.make_page(all_models)
-    print("DONE WITH MAKEPAGE, allmodels=",all_models)
-    p.write_all_models_page(all_models)
+    print("using quick = ",quick)
+    p.make_page(all_models,all_names,lock,quick=quick)
+    p.write_all_models_page(all_models,all_names)
