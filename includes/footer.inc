@@ -45,7 +45,9 @@
             <!-- Third party plugin JS-->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
             <!-- LaTeX math in HTML -->
-            <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+            <script type="text/javascript" id="MathJax-script" async
+              src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+            </script>
             <!-- Core theme JS from https://startbootstrap.com/themes/freelancer/-->
             <script src="freelancer/js/scripts.js"></script>
         </div>
