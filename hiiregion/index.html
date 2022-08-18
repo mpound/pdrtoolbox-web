@@ -36,7 +36,75 @@
                 <h1 class="pre-wrap mymasthead-heading font-weight-bold mb-0">
 Ionized Gas Atomic Spectral Line Intensity Diagnostics for H II Regions</h1>
 <br>
-<p>
+<p class="myp">
+Observations of fine-structure line ratios arising in 
+ionized gas can be used to estimate the electron density, <span class="math nohighlight notranslate">\(n_e\)</>, and gas temperature in an H II region. In general, lines that arise from different energies above ground give
+estimates of the gas temperature, while lines that arise from similar levels above ground but with different collision strengths give estimates of the gas density. 
+We focus on lines that are expected to be bright in JWST observations, namely those arising from 
+<span class="math notranslate nohighlight">
+\({\rm Fe^+}, {\rm Ar^{+2}}\), </span>
+and 
+<span class="math notranslate nohighlight">
+\({\rm Ar^{+4}}\).
+</span>
+In particular, 
+<span class="math notranslate nohighlight">
+\({\rm Fe^+}\)
+</span>
+has great potential for producing diagnostic line ratios due to the large number of levels excited in 
+an H II region, but with strong caveats as noted here. 
+Low level
+<span class="math notranslate nohighlight">
+\({\rm Fe^+}\)
+</span>
+line emission is also produced in the
+neutral gas within the PDR and thus the same species
+could trace physical conditions continuously from ionized
+to neutral gas. 
+<p class="myp">
+We assume that the line emission is in the optically thin
+limit so that the ratio of intensities is given by 
+the ratio of volume emissivity. For 
+<span class="math notranslate nohighlight">
+\({\rm Ar^{+2}}\)
+</span>,
+and 
+<span class="math notranslate nohighlight">
+\({\rm Ar^{+4}}\)
+</span>,
+we use CHIANTI \citep{Dere1997, DelZanna2021} using the default values
+for the A values and collision strengths.
+For 
+<span class="math notranslate nohighlight">
+\({\rm Fe^+}\)
+</span>
+we substituted the default values in 
+CHIANTI with Einstein A values from \cite{Deb2011} and collision strengths from \cite{Smyth2019}. 
+The emissivity ratios are found in the temperature range from 
+<span class="math notranslate nohighlight">
+\(T=10^3\)
+</span>
+K to 
+<span class="math notranslate nohighlight">
+\(10^4\)
+</span>
+K, and the density range from 
+<span class="math notranslate nohighlight">
+\(n_e = 10^2~{\rm cm^{-3}}\) 
+</span>
+to
+<span class="math notranslate nohighlight">
+\(10^6~{\rm cm^{-3}}\).
+</span>
+<p class="myp">
+We created <a class="mya" href="#atomicfits">FITS files of intensities</a> in the 
+<span class="math notranslate nohighlight">\( (n_e,T_e) \)</span> plane
+from which 
+the phase space plots below were made.
+We note, however, that the atomic data is screwed up 
+\cite[e.g.,][]{Koo2016} so the
+[Fe II] plots must be considered tentative until the atomic
+data can be further verified by observations. 
 <a class="mya" href="make_hii_figs.py">Here</a> is a Python script to make these figures.
 </p>
 <div class="row">
@@ -125,6 +193,36 @@ Ionized Gas Atomic Spectral Line Intensity Diagnostics for H II Regions</h1>
         </figure>
     </div>
 </div>
+</div> <!-- container -->
+
+<a name="atomicfits">
+            <div class="container d-flex flex-column">
+<hr width="100%">
+<h2>FITS Files of Intensities and Intensity Ratios</h2>
+<table  class="table mytable table-striped table-striped table-bordered" bgcolor="white" >
+<tr>
+<td>
+<a href="/models/wk2020_Z1.0_constant_density/FEII1p60_FEII1p64.html">[Fe II] 1.60 &micro;m/[Fe II] 1.64 &micro;m Intensity Ratio</a></td>
+<td>
+<a href="/models/wk2020_Z1.0_constant_density/FEII1p64_FEII5p34.html">[Fe II] 1.64 &micro;m/[Fe II] 5.34 &micro;m Intensity Ratio</a></td>
+<td>
+<a href="/models/wk2020_Z1.0_constant_density/FEII5p67_FEII5p34.html">[Fe II] 5.67 &micro;m/[Fe II] 5.34 &micro;m Intensity Ratio</a></td>
+</tr>
+<tr>
+<td>
+<a href="/models/wk2020_Z1.0_constant_density/FEII17p94_FEII5p34.html">[Fe II] 17.94 &micro;m/[Fe II] 5.34 &micro;m Intensity Ratio</a></td>
+<td>
+<a href="/models/wk2020_Z1.0_constant_density/FEII22p90_FEII5p34.html">[Fe II] 22.90 &micro;m/[Fe II] 5.34 &micro;m Intensity Ratio</a></td>
+<td>
+<a href="/models/wk2020_Z1.0_constant_density/FEII25p99_FEII5p34.html">[Fe II] 25.99 &micro;m/[Fe II] 5.34 &micro;m Intensity Ratio</a></td>
+</tr>
+<tr>
+<td>
+<a href="/models/wk2020_Z1.0_constant_density/FEII25p99.html">[Fe II] 25.99 &micro;m Intensity</a></td>
+<td><a href="/models/wk2020_Z1.0_constant_density/ARIII21p83_ARIII8p99.html">[Ar III] 21.83 &micro;m/[Ar III] 8.99 &micro;m Intensity Ratio</a></td>
+<td><a href="/models/wk2020_Z1.0_constant_density/ARV13p07_ARV7p91.html">[Ar V] 13.07 &micro;m/[Ar V] 7.91 &micro;m Intensity Ratio</a></td>
+</tr>
+</table>
 
 
 
