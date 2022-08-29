@@ -72,14 +72,27 @@ and
 <span class="math notranslate nohighlight">
 \({\rm Ar^{+4}}\)
 </span>,
-we use CHIANTI \citep{Dere1997, DelZanna2021} using the default values
+we use CHIANTI (
+<a class="mya" href="https://doi.org/10.1051/aas:1997368">
+Dere et al (1997)</a>;
+<a class="mya" href="https://doi.org/10.3847/1538-4357/abd8ce">
+DelZanna et al. (2022)</a>
+)
+using the default values
 for the A values and collision strengths.
 For 
 <span class="math notranslate nohighlight">
 \({\rm Fe^+}\)
 </span>
 we substituted the default values in 
-CHIANTI with Einstein A values from \cite{Deb2011} and collision strengths from \cite{Smyth2019}. 
+CHIANTI with Einstein A values from 
+<a class="mya" href="https://doi.org/10.1051/0004-6361/201118059">
+Deb &amp; Hibbert (2011)
+</a>
+and collision strengths from 
+<a class="mya" href="https://doi.org/10.1093/mnras/sty3198">
+Smyth et al. (2019)
+</a>.
 The emissivity ratios are found in the temperature range from 
 <span class="math notranslate nohighlight">
 \(T=10^3\)
@@ -101,10 +114,16 @@ We created <a class="mya" href="#atomicfits">FITS files of intensities</a> in th
 <span class="math notranslate nohighlight">\( (n_e,T_e) \)</span> plane
 from which 
 the phase space plots below were made.
-We note, however, that the atomic data is screwed up 
-\cite[e.g.,][]{Koo2016} so the
+We note, however, that for [Fe II] fine-structure lines the published A values and collision strengths vary between different authors and in some cases do not agree with
+the observations (e.g., 
+<a class="mya" href="https://doi.org/10.5303/JKAS.2016.49.3.109">
+Koo et al. (2016)
+</a>)
+so the
 [Fe II] plots must be considered tentative until the atomic
-data can be further verified by observations. 
+data can be further verified by observations, laboratory work, 
+or quantum calculations. 
+</p><p class="myp">
 <a class="mya" href="make_hii_figs.py">Here</a> is a Python script to make these figures.
 </p>
 <div class="row">
