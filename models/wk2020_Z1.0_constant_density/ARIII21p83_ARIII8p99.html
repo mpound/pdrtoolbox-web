@@ -45,15 +45,10 @@
                     </a>
                     <div class="card-body">
                 <p class="myp card-text">
-[Ar III] 21.83 &micro;m/[Ar III] 8.99 &micro;m Intensity Ratio
- emitted from the surface  
-of a PDR
-as a function of the cloud density <em>n</em> and the FUV flux incident on the cloud <em>G<sub>0</sub></em>
-.
-&nbsp;
-  
-&nbsp;
-The models in the wk2020 ModelSet are based on <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2006ApJ...644..283K/abstract" >Kaufman et al. 2006 </a>, <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2010ApJ...716.1191W/abstract">Wolfire et al. 2010</a>, and <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2016ApJ...826..183N/abstract">Neufeld &amp; Wolfire 2016</a>. They use <a class="mya" href="/models.html#2020">these parameters.</a> More details are in the FITS headers.
+[Ar III] 21.83 &micro;m/[Ar III] 8.99 &micro;m Intensity Ratio emitted from the ionized gas layer  of a PDR
+as a function of the electron gas temperature <em>T<sub>e</sub></em> and electron density <em>n<sub>e</sub></em>.
+We assume that the line emission is in the optically thin limit so that the ratio of intensities is given by the ratio of volume emissivity. For <span class="math notranslate nohighlight"> \({\rm Ar^{+2}}\) </span>, and <span class="math notranslate nohighlight"> \({\rm Ar^{+4}}\) </span>, we use CHIANTI ( <a class="mya" href="https://doi.org/10.1051/aas:1997368"> Dere et al (1997)</a>; <a class="mya" href="https://doi.org/10.3847/1538-4357/abd8ce"> DelZanna et al. (2022)</a>) using the default values for the A values and collision strengths.  For <span class="math notranslate nohighlight"> \({\rm Fe^+}\) </span> we substituted the default values in CHIANTI with Einstein A values from <a class="mya" href="https://doi.org/10.1051/0004-6361/201118059"> Deb &amp; Hibbert (2011) </a> and collision strengths from <a class="mya" href="https://doi.org/10.1093/mnras/sty3198"> Smyth et al. (2019) </a>.  The emissivity ratios are found in the temperature range from <span class="math notranslate nohighlight"> \(T_e=10^3\) </span> K to <span class="math notranslate nohighlight"> \(10^4\) </span> K, and the density range from <span class="math notranslate nohighlight"> \(n_e = 10^2~{\rm cm^{-3}}\) </span> to <span class="math notranslate nohighlight"> \(10^6~{\rm cm^{-3}}\).  </span>
+</p>
 The FITS file <a class="mya" href="ARIII21p83_ARIII8p99.fits">is available for download.</a>
 </p>
                     </div>
