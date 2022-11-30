@@ -47,8 +47,8 @@ class Page():
             pool.starmap(self.process_modelset,z)
 
     def process_modelset(self,n,z,md,m):
-        debug = False
-        if debug and n != "wk2006": return
+        debug = True
+        if debug and n != "wk2020": return
         print(f'Making page for {n,z,md,m}')
         explain = dict()
         explain["lmc"] = 'The models in the wk2006 Large Magellanic Cloud ModelSet are based <a class="mya" href="http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=1999ApJ...527..795K" >Kaufman et al. 1999</a> and <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2006ApJ...644..283K/abstract" >Kaufman et al. 2006 </a>. They use <a class="mya" href="/models.html#parameters">these parameters.</a> More details are in the FITS headers.'
@@ -56,7 +56,7 @@ class Page():
         explain["wk2006"] = 'The models in the wk2006 ModelSet are based <a class="mya" href="http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=1999ApJ...527..795K" >Kaufman et al. 1999</a> and <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2006ApJ...644..283K/abstract" >Kaufman et al. 2006 </a>. They use <a class="mya" href="/models.html#parameters">these parameters.</a> More details are in the FITS headers.'
         explain["wk2020"] = 'The models in the wk2020 ModelSet are based on <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2006ApJ...644..283K/abstract" >Kaufman et al. 2006 </a>, <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2010ApJ...716.1191W/abstract">Wolfire et al. 2010</a>, and <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2016ApJ...826..183N/abstract">Neufeld &amp; Wolfire 2016</a>. They use <a class="mya" href="/models.html#2020">these parameters.</a> More details are in the FITS headers.'
         explain["kt2013"] = 'The models in this ModelSet were created with the <a class="mya" href="https://astro.uni-koeln.de/stutzki/research/kosma-tau">KOSMA-tau</a> PDR code. More details are in the FITS headers.'
-        explain["hii"] = 'We assume that the line emission is in the optically thin limit so that the ratio of intensities is given by the ratio of volume emissivity. For <span class="math notranslate nohighlight"> \({\\rm Ar^{+2}}\) </span>, and <span class="math notranslate nohighlight"> \({\\rm Ar^{+4}}\) </span>, we use CHIANTI ( <a class="mya" href="https://doi.org/10.1051/aas:1997368"> Dere et al (1997)</a>; <a class="mya" href="https://doi.org/10.3847/1538-4357/abd8ce"> DelZanna et al. (2022)</a>) using the default values for the A values and collision strengths.  For <span class="math notranslate nohighlight"> \({\\rm Fe^+}\) </span> we substituted the default values in CHIANTI with Einstein A values from <a class="mya" href="https://doi.org/10.1051/0004-6361/201118059"> Deb &amp; Hibbert (2011) </a> and collision strengths from <a class="mya" href="https://doi.org/10.1093/mnras/sty3198"> Smyth et al. (2019) </a>.  The emissivity ratios are found in the temperature range from <span class="math notranslate nohighlight"> \(T_e=10^3\) </span> K to <span class="math notranslate nohighlight"> \(10^4\) </span> K, and the density range from <span class="math notranslate nohighlight"> \(n_e = 10^2~{\\rm cm^{-3}}\) </span> to <span class="math notranslate nohighlight"> \(10^6~{\\rm cm^{-3}}\).  </span>'
+        explain["hii"] = 'We assume that the line emission is in the optically thin limit so that the ratio of emissivities is given by the ratio of volume emissivity. For <span class="math notranslate nohighlight"> \({\\rm Ar^{+2}}\) </span>, and <span class="math notranslate nohighlight"> \({\\rm Ar^{+4}}\) </span>, we use CHIANTI ( <a class="mya" href="https://doi.org/10.1051/aas:1997368"> Dere et al (1997)</a>; <a class="mya" href="https://doi.org/10.3847/1538-4357/abd8ce"> DelZanna et al. (2022)</a>) using the default values for the A values and collision strengths.  For <span class="math notranslate nohighlight"> \({\\rm Fe^+}\) </span> we substituted the default values in CHIANTI with Einstein A values from <a class="mya" href="https://doi.org/10.1051/0004-6361/201118059"> Deb &amp; Hibbert (2011) </a> and collision strengths from <a class="mya" href="https://doi.org/10.1093/mnras/sty3198"> Smyth et al. (2019) </a>.  The emissivity ratios are found in the temperature range from <span class="math notranslate nohighlight"> \(T_e=10^3\) </span> K to <span class="math notranslate nohighlight"> \(10^4\) </span> K, and the density range from <span class="math notranslate nohighlight"> \(n_e = 10^2~{\\rm cm^{-3}}\) </span> to <span class="math notranslate nohighlight"> \(10^6~{\\rm cm^{-3}}\).  </span>'
         model_title = dict()
         model_title["wk2006"] = "Wolfire/Kaufman 2006"
         model_title["smc"] = "Wolfire/Kaufman 2006 Small Magellanic Cloud "
@@ -101,13 +101,27 @@ class Page():
             if i !=0 and i%numcols == 0:
                 table_contents+="</tr>\n<tr>"
             try:
-                model=ms.get_model(r)
+                #ugly hack
                 modelfile = ms.table.loc[r]["filename"]
+                print(modelfile)
+                if modelfile  == "FEII25p99.fits":
+                    model=ms.get_model(r,unit="erg/(cm3 s ion)")
+                else:
+                    model=ms.get_model(r)
                 if "/" in model._title:
-                    model._title += " Intensity Ratio"
+                    #kluge for HII diagnotic files
+                    if "FE" in modelfile or "AR" in modelfile:
+                        model._title += " Emissivity Ratio"
+#@TODO set modeltype. but need to be able to handle it in Measurement/Modelset
+                    else:
+                        model._title += " Intensity Ratio"
                 else:
                     if "FIR" not in model._title and "Surface" not in  model._title and "A_V" not in model._title:
-                        model._title += " Intensity"
+                    #kluge for HII diagnotic files
+                        if "FE" in modelfile or "AR" in modelfile:
+                            model._title += " Emissivity"
+                        else:
+                            model._title += " Intensity"
                 model._title = model._title.replace("$\mu$","&micro;").replace("$_{FIR}$","<sub>FIR</sub>").replace("$_2$","<sub>2</sub>").replace("$A_V$","A<sub>V</sub>").replace("$^{13}$","<sup>13</sup>").replace("$A_V=0.01$","A<sub>V</sub> = 0.01")
                                         #.replace("$T_S$","T<sub>S</sub>")
                 #print(f"doing {r} = {modelfile} , {modelfile}.png , title={model._title} CTYPE=[{model.wcs.wcs.ctype[0]},{model.wcs.wcs.ctype[1]}]")
@@ -170,6 +184,8 @@ class Page():
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Process CLI.')
     parser.add_argument('-q','--quick',help='skip creating plots, just update all_models page',action="store_true")
+    #TODO figure out how to actuall use this
+    parser.add_argument('-m','--modelset',help='only do the given modelset',action="store",default=None)
     args = parser.parse_args()
     if args.quick:
         quick = True
