@@ -8,6 +8,9 @@ from pdrtpy.measurement import Measurement
 from pdrtpy.modelset import ModelSet
 from pdrtpy.plot.modelplot import ModelPlot
 import astropy.units as u
+from pdrtpy import version
+
+print("VERSION ",version())
 
 nax1clip = [1E3,7E3]
 nax2clip = [10,1E6]
