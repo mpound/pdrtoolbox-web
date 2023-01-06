@@ -156,7 +156,7 @@ class Page():
                 # This is supposed to stop complaints about 
                 # too many figures, but actually does not!
                 mp._plt.close(mp.figure) 
-                output=pagetemplate.render(model=model,
+                output=pagetemplate.render(model=model,name=ms.name,
                                        fitsfilename=f'{modelfile}.fits',
                                        model_explain=explain[ms.keyname],
                                        modelfile=modelfile)
