@@ -7,6 +7,8 @@ import os
 import jinja2
 from copy import deepcopy
 import argparse
+import warnings
+
 
 def init_processes(l):
     global lock
@@ -48,7 +50,7 @@ class Page():
 
     def process_modelset(self,n,z,md,m):
         debug = False
-        if debug and "2020" not in n: return
+        if debug and "wk2020" not in n: return
         print(f'Making page for {n,z,md,m}')
         explain = dict()
         explain["lmc"] = 'The models in the wk2006 Large Magellanic Cloud ModelSet are based <a class="mya" href="http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=1999ApJ...527..795K" >Kaufman et al. 1999</a> and <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2006ApJ...644..283K/abstract" >Kaufman et al. 2006 </a>. They use <a class="mya" href="/models.html#parameters">these parameters.</a> More details are in the FITS headers.'
@@ -185,6 +187,8 @@ class Page():
 
 
 if __name__ == '__main__':
+#    warnings.simplefilter("ignore",DeprecationWarning)
+#    warnings.simplefilter("ignore",UserWarning)
     parser = argparse.ArgumentParser(description='Process CLI.')
     parser.add_argument('-q','--quick',help='skip creating plots, just update all_models page',action="store_true")
     #TODO figure out how to actuall use this
