@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+ <!-- head info -->
+<!--#include virtual="/includes/head.inc" -->
+
+    <body id="page-top">
+        <!-- Navigation-->
+
+    <nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
+        <div class="container"><a class="navbar-brand js-scroll-trigger" href="#page-top">PhotoDissociation Region Toolbox</a>
+            <button class="navbar-toggler navbar-toggler-right font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu<i class="fas fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/index.html">HOME</a>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/tools.html">TOOLS</a>
+                        </li>
+        <li class="nav-item dropdown mx-0 mx-lg-1">
+          <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded" href="#" id="navbarDarkDropdownMenuLink" role="button" data-toggle="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            MODELS
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+            <li><a class="dropdown-item" href="/models.html">PDR Code Descriptions</a></li>
+            <li><a class="dropdown-item" href="/models/index.html">Model Plots &amp; FITS Files</a></li>
+          </ul>
+        </li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/docs.html">DOCUMENTS</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+        <header class="mymasthead bg-primary text-white text-center">
+            <div class="container d-flex flex-column">
+                <!-- Masthead Subheading-->
+                <h1 class="pre-wrap mymasthead-heading font-weight-bold mb-0">
+KOSMA-tau 2020 models, computed to match closely the WK2020 models, clumpy, maximum clump mass 0.1 M<sub>&odot;</sub>, Z=1.0</h1>
+                <p class="myp">
+Below are links to the individual FITS files
+and plots in the <i>kt2020</i> <a class="mya"
+href="https://pdrtpy.readthedocs.io/en/latest/pdrtpy.modelset.html">ModelSet</a>. We also provide a <a class="mya" href="/models/kt2013_models.tgz">gzipped tarball</a> of all the <i>kt2013</i> FITS and PNG files.
+
+<table  class="table mytable table-striped table-striped table-bordered" bgcolor="white" >
+<tr><td><a href="CI609.html">[C I] 609 &micro;m Intensity</a></td><td><a href="CI370.html">[C I] 370 &micro;m Intensity</a></td><td><a href="OI63.html">[O I] 63 &micro;m Intensity</a></td><td><a href="OI145.html">[O I] 145 &micro;m Intensity</a></td></tr>
+<tr><td><a href="CII158.html">[C II] 158 &micro;m Intensity</a></td><td><a href="CO10.html">CO(J=1-0) Intensity</a></td><td><a href="CO21.html">CO(J=2-1) Intensity</a></td><td><a href="CO32.html">CO(J=3-2) Intensity</a></td></tr>
+<tr><td><a href="CO43.html">CO(J=4-3) Intensity</a></td><td><a href="CO54.html">CO(J=5-4) Intensity</a></td><td><a href="CO65.html">CO(J=6-5) Intensity</a></td><td><a href="CO76.html">CO(J=7-6) Intensity</a></td></tr>
+<tr><td><a href="CO87.html">CO(J=8-7) Intensity</a></td><td><a href="CO98.html">CO(J=9-8) Intensity</a></td><td><a href="CO109.html">CO(J=10-9) Intensity</a></td><td><a href="CO1110.html">CO(J=11-10) Intensity</a></td></tr>
+<tr><td><a href="CO1211.html">CO(J=12-11) Intensity</a></td><td><a href="CO1312.html">CO(J=13-12) Intensity</a></td><td><a href="CO1413.html">CO(J=14-13) Intensity</a></td><td><a href="FIR.html">I<sub>FIR</sub></a></td></tr>
+<tr><td><a href="OI63+CII158.html">[O I] 63 &micro;m + [C II] 158 &micro;m Intensity</a></td><td><a href="OI145+CII158.html">[O I] 145 &micro;m + [C II] 158 &micro;m Intensity</a></td><td><a href="OI145_OI63.html">[O I] 145 &micro;m/[O I] 63 &micro;m Intensity Ratio</a></td><td><a href="OI145_CII158.html">[O I] 145 &micro;m/[C II] 158 &micro;m Intensity Ratio</a></td></tr>
+<tr><td><a href="OI63_CII158.html">[O I] 63 &micro;m/[C II] 158 &micro;m Intensity Ratio</a></td><td><a href="CII158_CI609.html">[C II] 158 &micro;m/[C I] 609 &micro;m Intensity Ratio</a></td><td><a href="CI370_CI609.html">[C I] 370 &micro;m/[C I] 609 &micro;m Intensity Ratio</a></td><td><a href="CII158_CO10.html">[C II] 158 &micro;m/CO(J=1-0) Intensity Ratio</a></td></tr>
+<tr><td><a href="CII158_CO21.html">[C II] 158 &micro;m/CO(J=2-1) Intensity Ratio</a></td><td><a href="CII158_CO32.html">[C II] 158 &micro;m/CO(J=3-2) Intensity Ratio</a></td><td><a href="CII158_CO43.html">[C II] 158 &micro;m/CO(J=4-3) Intensity Ratio</a></td><td><a href="CII158_CO54.html">[C II] 158 &micro;m/CO(J=5-4) Intensity Ratio</a></td></tr>
+<tr><td><a href="CII158_CO65.html">[C II] 158 &micro;m/CO(J=6-5) Intensity Ratio</a></td><td><a href="CO21_CO10.html">CO(J=2-1)/CO(J=1-0) Intensity Ratio</a></td><td><a href="CO32_CO10.html">CO(J=3-2)/CO(J=1-0) Intensity Ratio</a></td><td><a href="CO32_CO21.html">CO(J=3-2)/CO(J=2-1) Intensity Ratio</a></td></tr>
+<tr><td><a href="CO43_CO10.html">CO(J=4-3)/CO(J=1-0) Intensity Ratio</a></td><td><a href="CO43_CO21.html">CO(J=4-3)/CO(J=2-1) Intensity Ratio</a></td><td><a href="CO65_CO10.html">CO(J=6-5)/CO(J=1-0) Intensity Ratio</a></td><td><a href="CO65_CO21.html">CO(J=6-5)/CO(J=2-1) Intensity Ratio</a></td></tr>
+<tr><td><a href="CO65_CO54.html">CO(J=6-5)/CO(J=5-4) Intensity Ratio</a></td><td><a href="CO76_CO10.html">CO(J=7-6)/CO(J=1-0) Intensity Ratio</a></td><td><a href="CO76_CO21.html">CO(J=7-6)/CO(J=2-1) Intensity Ratio</a></td><td><a href="CO76_CO43.html">CO(J=7-6)/CO(J=4-3) Intensity Ratio</a></td></tr>
+<tr><td><a href="CO76_CO54.html">CO(J=7-6)/CO(J=5-4) Intensity Ratio</a></td><td><a href="CO76_CO65.html">CO(J=7-6)/CO(J=6-5) Intensity Ratio</a></td><td><a href="CO87_CO54.html">CO(J=8-7)/CO(J=5-4) Intensity Ratio</a></td><td><a href="CO87_CO65.html">CO(J=8-7)/CO(J=6-5) Intensity Ratio</a></td></tr>
+<tr><td><a href="CO98_CO54.html">CO(J=9-8)/CO(J=5-4) Intensity Ratio</a></td><td><a href="CO98_CO65.html">CO(J=9-8)/CO(J=6-5) Intensity Ratio</a></td><td><a href="CO109_CO54.html">CO(J=10-9)/CO(J=5-4) Intensity Ratio</a></td><td><a href="CO109_CO65.html">CO(J=10-9)/CO(J=6-5) Intensity Ratio</a></td></tr>
+<tr><td><a href="CO109_CO76.html">CO(J=10-9)/CO(J=7-6) Intensity Ratio</a></td><td><a href="CO1110_CO54.html">CO(J=11-10)/CO(J=5-4) Intensity Ratio</a></td><td><a href="CO1110_CO65.html">CO(J=11-10)/CO(J=6-5) Intensity Ratio</a></td><td><a href="CO1211_CO54.html">CO(J=12-11)/CO(J=5-4) Intensity Ratio</a></td></tr>
+<tr><td><a href="CO1211_CO65.html">CO(J=12-11)/CO(J=6-5) Intensity Ratio</a></td><td><a href="CO1312_CO54.html">CO(J=13-12)/CO(J=5-4) Intensity Ratio</a></td><td><a href="CO1312_CO65.html">CO(J=13-12)/CO(J=6-5) Intensity Ratio</a></td><td><a href="CO1413_CO54.html">CO(J=14-13)/CO(J=5-4) Intensity Ratio</a></td></tr>
+<tr><td><a href="CO1413_CO65.html">CO(J=14-13)/CO(J=6-5) Intensity Ratio</a></td><td><a href="OI63+CII158_FIR.html">[O I] 63 &micro;m + [C II] 158 &micro;m/I<sub>FIR</sub> Intensity Ratio</a></td><td><a href="OI145+CII158_FIR.html">[O I] 145 &micro;m + [C II] 158 &micro;m/I<sub>FIR</sub> Intensity Ratio</a></td></tr>
+</table>
+        </p> 
+        </div>
+        </header>
+<!--#include virtual="/includes/footer.inc" -->
+
+    </body>
+</html>
