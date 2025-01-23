@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+ <!-- head info -->
+<!--#include virtual="/includes/head.inc" -->
+
+    <body id="page-top">
+        <!-- Navigation-->
+
+    <nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
+        <div class="container"><a class="navbar-brand js-scroll-trigger" href="#page-top">PhotoDissociation Region Toolbox</a>
+            <button class="navbar-toggler navbar-toggler-right font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu<i class="fas fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/index.html">HOME</a>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/tools.html">TOOLS</a>
+                        </li>
+        <li class="nav-item dropdown mx-0 mx-lg-1">
+          <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded" href="#" id="navbarDarkDropdownMenuLink" role="button" data-toggle="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            MODELS
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+            <li><a class="dropdown-item" href="/models.html">PDR Code Descriptions</a></li>
+            <li><a class="dropdown-item" href="/models/index.html">PDR Model Plots &amp; FITS Files</a></li>
+            <li><a class="dropdown-item" href="/hiiregion/index.html">H II Region Diagnostics</a></li>
+          </ul>
+        </li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/docs.html">DOCUMENTS</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+        <header class="mymasthead bg-primary text-white text-center">
+            <div class="container d-flex flex-column">
+                <!-- Masthead Subheading-->
+                <h1 class="pre-wrap mymasthead-heading font-weight-bold mb-0">
+Fluorescent [O I] Line Diagnostic for the Incident Ultraviolet Radiation Field
+</h1>
+<br>
+<p class="myp">
+<span class="math notranslate nohighlight">
+</span>
+</p>
+<div class="container">
+<div class="row">
+    <div class="col">
+        <figure class="figure">
+            <a class="mya" href="g0oi316plt.png">
+            <img  class="img-fluid figure-img" src="g0oi316plt.png"
+                alt="">
+            </a>
+            <figcaption class="figure-caption mya">
+The face-on [O I] 1.316 &mu;m line intensity multiplet (3S<sup>0</sup><sub>1</sub> &ndash; 3P<sub>0,1,2</sub>)
+is shown as a function of incident radiation in Habing (<b>G<sub>0</sub></b>) units.
+I<sup>obs</sup>(1.316 &mu;m) is the observed line intensity in units erg cm<sup>-2</sup> s<sup>-1</sup>
+sr<sup>-1</sup> and <b>i</b> is the angle between an edge-on PDR and the line of sight.
+For a strictly edge-on PDR <b>(i=0)</b> additional constraints need to be
+added for the depth of the PDR along the line of sight.
+Lines are shown for PDRs of constant density <b>n = 10<sup>3</sup></b> (red), <b>n = 10<sup>4</sup></b> (green),
+and <b>n = 10<sup>5</sup></b> (blue) cm<sup>-3</sup>. 
+            <br>
+            <a class="mya" href="g0oi316plt.pdf">(PDF , </a>
+            <a class="mya" href="g0oi316plt.png">PNG)</a>
+            </figcaption>
+        </figure>
+    </div>
+</div>
+</div> <!-- container -->
+<div class="container">
+<h3>Explanation</h3>
+<p class="myp">
+This diagram and the instructions below will help you take into account viewing inclination angle when interpreting measured [O I] 1.316 &mu;m emission lines from a PDR.
+</p>
+
+<h4>How the diagram was computed</h4>
+<p class="myp">
+A plane-parallel geometry for the PDR is assumed. All [O I] levels are included for which atomic data
+is available in the <a class="mya" href="https://linelist.pa.uky.edu/newpage/">line list</a> 
+of <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2018Galax...6...63V/abstract">van Hoof, P.A.M., 2018, Galaxies, 6, 63.</a>
+Radiation pumping is considered
+to occur from the lowest fine-structure levels of [O I] (3P<sub>3,1,0</sub>) to higher
+levels.  The ultraviolet continuum radiation has the shape of a Draine 1978
+field. Self-shielding in the pumping lines is handled using
+an FGK approximation separately for each line. 
+(<a class="mya" href="https://ui.adsabs.harvard.edu/abs/1979ApJ...227..466F/abstract">Federman, Glassgold, &amp; Kwan, 1979, AJ, 227, 466</a>).
+ As the pumping lines
+become optically thick, an escape probability
+is used to diminish the radiative de-excitation to ground (e.g., 
+<a class="mya" href="https://ui.adsabs.harvard.edu/abs/1985ApJ...291..722T/abstract">Tielens &amp; Hollenbach 1985, ApJ, 291, 722</a>). 
+The radiative
+cascade is calculated starting from the highest level and working downward
+to lower levels accounting for the direct UV pumping and entry into each
+level by radiative de-excitation from above.
+The distribution with depth into the PDR of the ground-state
+[O I] level populations is taken from the full PDR model.
+The final emitted [O I] line intensity is the result of the integrated
+emissivity along a line perpendicular to the PDR face.  
+</p>
+<h4>Directions for Use</h4>
+<p class="myp">
+<ol class="myp">
+<li>Measure the sum of the [O I] 1.316&mu;m multiplet line emission (3S<sup>0</sup><sub>1</sub> &ndash; 3P<sub>0,1,2</sub>).
+There are 3 lines in the multiplet, and likely unresolved in JWST observations.
+Units need to be erg cm<sup>-2</sup> s<sup>-1</sup> sr<sup>-1</sup>.
+</li>
+<li>
+Multiply the observed intensity by <b>sin(i)</b> where <b>i</b> is the angle between
+the face of the PDR and the line of sight. The face is the surface facing
+the illuminating star. A face-on PDR has <b>i = 90 (sin(i) = 1)</b> and a strictly
+edge-on PDR has <b>i = 0 (sin(i) = 0)</b>. This plot works only for <b>i &gt; 0</b>. 
+<br>
+For example, the value of <b>i</b> has
+been estimated for the Orion Bar to be ~4 degrees from the
+width of the ionized gas lines at the ionization front 
+(<a class="mya" href="https://ui.adsabs.harvard.edu/abs/2009ApJ...693..285P/abstract">Pellegrini et al 2009</a>,
+<a class="mya" href="https://ui.adsabs.harvard.edu/abs/2016ApJ...830..118S/abstract">Salgado et al. 2016</a>, 
+<a class="mya" href="https://ui.adsabs.harvard.edu/abs/2024A%26A...685A..74P/abstract">Peeters et al. 2024</a>).
+</li>
+<li>The product of the observed line intensity times <b>sin(i)</b> gives an estimate
+for the emission emitted from the face of the PDR.
+</li>
+<li>Read off the <b>G<sub>0</sub></b> incident on the face of the PDR from the plot. Density
+curves are plotted for 10<sup>3</sup>, 10<sup>4</sup>, and 10<sup>5</sup> cm<sup>-3</sup>, but the spread in
+<b>G<sub>0</sub></b> is only about a factor of 2 for a range in density of 10<sup>3</sup>. If the density
+is unknown then use the 10<sup>4</sup> curve.
+</li>
+</ol>
+</p>
+</div>
+</header>
+<!--#include virtual="/includes/footer.inc" -->
+
+    </body>
+</html>
