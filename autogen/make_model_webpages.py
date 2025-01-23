@@ -17,7 +17,7 @@ def init_processes(l):
 class Page():
     def __init__(self):
         self.env=jinja2.Environment(loader=jinja2.FileSystemLoader("."))
-        self.base_dir = "../models"
+        self.base_dir = "../models.new"
 
     def write_all_models_page(self,all_models,all_names):
         # don't instantiate these in __init__ or you get a 
@@ -50,7 +50,7 @@ class Page():
 
     def process_modelset(self,n,z,md,m):
         debug = True
-        if debug and "kt2013" not in n: return
+        if debug and "lmc" not in n: return
         print(f'Making page for {n,z,md,m}')
         explain = dict()
         explain["lmc"] = 'The models in the wk2006 Large Magellanic Cloud ModelSet are based <a class="mya" href="http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=1999ApJ...527..795K" >Kaufman et al. 1999</a> and <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2006ApJ...644..283K/abstract" >Kaufman et al. 2006 </a>. They use <a class="mya" href="/models.html#parameters">these parameters.</a> More details are in the FITS headers.'
