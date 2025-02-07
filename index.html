@@ -71,35 +71,47 @@ Given a set of observations of spectral line or continuum intensities, PDR Toolb
 incident intensity and cloud density based on our models of PDR emission. 
 One can also fit <i>H<sub>2</sub></i> rovibrational emission excitation diagrams to determine temperature, column density, and ortho-to-para ratio.
 </p>
-<h4>The current version is <a class="mya" href="https://pdrtpy.readthedocs.io/en/latest/">2.3.1</a> (released Feb 06, 2022)</h4>
+<h4>The current version is <a class="mya" href="https://pdrtpy.readthedocs.io/en/stable/">2.4.4</a> (released Feb 07, 2025)</h4>
 <hr width="50%">
 </div>
-<h4>New Paper on PDRT!</h4>
-<i>The PhotoDissociation Region Toolbox: Software and Models for Astrophysical Analysis</i>, <br>Marc W. Pound &amp; Mark G. Wolfire 2023, AJ, 
-165:25 <br><a class="mya" href="https://ui.adsabs.harvard.edu/abs/2023AJ....165...25P/abstract">Read it here</a>.
-<hr width="50%">
-<h4>Recent Release Highlights</h4>
+<h4>Release Highlights</h4>
 <div class="container">
  <div class="row text-left">
  <div class="col-md">
 <ul>
-<li><h6>New KOSMA-tau models</h6>
-<p class="myp">A new set of KOSMA-tau models <i>kt2020</i> is now included
-in the Toolbox. The <a class="mya" href="models/index.html">new ModelSet</a>
-have been computed with physical paramaters that closely match the
-<i>wk2020</i> ModelSet, making them very appropriate for comparing results from the different PDR codes.
-</p>
-</li>
-</li>
-<li><h6>Updated H II region ionized gas diagnostic models &amp; plots</h6>
+<li><h6>[O I] 1.613 &mu;m Diagnostic Diagram</h6>
 <p class="myp">
-We have updated the <a href="hiiregion/index.html" class="mya">models and diagnostic plots</a> for observations of Fe and Ar in H II regions.
+We 
+<a class="mya" href="/oidiagnostic/index.html">provide guidance</a> 
+to help to take into account viewing inclination angle when interpreting measured [O I] 1.613 &mu;m emission line (e.g., with JWST).
 </p>
+</li>
+<li><h6>LMC metallicity surface temperature</h6>
+<p class="myp">
+We have computed <a class="mya" href="/models/lmc_Z0.5_constant_density/TSAV0p01sm.html">models for surface temperature</a> at the metallicity of the Large Magellenic Cloud (z=0.5).
+</p>
+</li>
+<li><h6>Bug fixes</h6>
+<p class="myp">We have made several <a class="mya" 
+href="https://github.com/mpound/pdrtpy/issues?q=is%3Aissue%20closed%3A2023-02-05..2025-02-06%20%20"
+>bug fixes and addressed requests for enhancment.</a> Thanks to users who reported issues!
+</p>
+</li>
+<li><h6>Support dropped for Python 3.9</h6>
+Since we rely on packages like astropy that require recent versions of Python to use their latest features, we now only support Python 3.10+.
+</li>
+
+
+<li><h6>..and more</h6>The full list of changes can be viewed <a class="mya" href="https://github.com/mpound/pdrtpy/CHANGE.md">on our github</a>.
 </li>
 </ul>
   </div>
  </div>
 </div>
+<hr width="50%">
+<h4>Reference Paper on PDRT</h4>
+<i>The PhotoDissociation Region Toolbox: Software and Models for Astrophysical Analysis</i>, <br>Marc W. Pound &amp; Mark G. Wolfire 2023, AJ, 
+165:25 <br><a class="mya" href="https://ui.adsabs.harvard.edu/abs/2023AJ....165...25P/abstract">Read it here</a>.
 <hr width="50%">
 <h5>Please remember to <a class="mya" href="#about">cite use</a> of the PDR Toolbox!</h5>
 <h6>And please join our <a class="mya" href="https://groups.google.com/g/pdrt">discussion forum.</a></h6>
