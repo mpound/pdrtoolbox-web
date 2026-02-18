@@ -71,7 +71,7 @@ Given a set of observations of spectral line or continuum intensities, PDR Toolb
 incident intensity and cloud density based on our models of PDR emission. 
 One can also fit <i>H<sub>2</sub></i> rovibrational emission excitation diagrams to determine temperature, column density, and ortho-to-para ratio.
 </p>
-<h4>The current version is <a class="mya" href="https://pdrtpy.readthedocs.io/en/stable/">2.4.4</a> (released Feb 07, 2025)</h4>
+<h4>The current version is <a class="mya" href="https://pdrtpy.readthedocs.io/en/stable/">2.6.2</a> (released Feb 20, 2026)</h4>
 <hr width="50%">
 </div>
 <h4>Release Highlights</h4>
@@ -79,28 +79,20 @@ One can also fit <i>H<sub>2</sub></i> rovibrational emission excitation diagrams
  <div class="row text-left">
  <div class="col-md">
 <ul>
-<li><h6>[O I] 1.316 &mu;m Diagnostic Diagram</h6>
+<li><h6>Alternative Viewing Angle Models</h6>
 <p class="myp">
-We 
-<a class="mya" href="/oidiagnostic/index.html">provide guidance</a> 
-to help to take into account viewing inclination angle when interpreting measured [O I] 1.316 &mu;m emission line (e.g., with JWST).
+Wolfire-Kaufman models are now available for <a href="http://pdrtpy.readthedocs.io/en/stable/pdrtpy.modelset.html">viewing inclination angles</a> from 0 (face-on) to 75 degrees. 
 </p>
 </li>
-<li><h6>LMC metallicity surface temperature</h6>
-<p class="myp">
-We have computed <a class="mya" href="/models/lmc_Z0.5_constant_density/TSAV0p01sm.html">models for surface temperature</a> at the metallicity of the Large Magellenic Cloud (z=0.5).
-</p>
+<li><h6>Wide variety of dust extinction curves supported</h6>
+ Karl Gordon's <a href="https://dust-extinction.readthedocs.io/en/latest/">dust extinction package</a> is now used for fitting visual extinction in excitation diagrams.
 </li>
 <li><h6>Bug fixes</h6>
 <p class="myp">We have made several <a class="mya" 
-href="https://github.com/mpound/pdrtpy/issues?q=is%3Aissue%20closed%3A2023-02-05..2025-02-06%20%20"
+href="https://github.com/mpound/pdrtpy/issues?q=is%3Aissue%20closed%3A2025-02-06..2026-02-20%20%20"
 >bug fixes and addressed requests for enhancment.</a> Thanks to users who reported issues!
 </p>
 </li>
-<li><h6>Support dropped for Python 3.9</h6>
-Since we rely on packages like astropy that require recent versions of Python to use their latest features, we now only support Python 3.10+.
-</li>
-
 
 <li><h6>..and more</h6>The full list of changes can be viewed <a class="mya" href="https://github.com/mpound/pdrtpy/CHANGE.md">on our github</a>.
 </li>
@@ -114,7 +106,7 @@ Since we rely on packages like astropy that require recent versions of Python to
 165:25 <br><a class="mya" href="https://ui.adsabs.harvard.edu/abs/2023AJ....165...25P/abstract">Read it here</a>.
 <hr width="50%">
 <h5>Please remember to <a class="mya" href="#about">cite use</a> of the PDR Toolbox!</h5>
-<h6>And please join our <a class="mya" href="https://groups.google.com/g/pdrt">discussion forum.</a></h6>
+
                 <!-- Icon Divider-->
                 <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>
