@@ -138,6 +138,8 @@ equivalently the model values should be divided by 2).
             <div class="col-lg-7 ml-auto">
 
         <h4>2020 Models</h4>
+            <p class="myp">
+                    In <a class="mya" href="https://pdrtpy.readthedocs.io">pdrtpy</a>, these are referred to as the <i>wk2020</i> ModelSet. 
                     <p class="myp">
                     These model data start with the 2006 PDR model code and add improved physics and chemistry. Critical updates include those discussed in
                     <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2016ApJ...826..183N/abstract">Neufeld &amp; Wolfire 2016</a>, plus photo rates from
@@ -151,16 +153,58 @@ equivalently the model values should be divided by 2).
                     communication) and have included <sup>13</sup>C chemistry along with the
                     emitted line intensities for  [<sup>13</sup>C II] and <sup>13</sup>CO.  In Box 1, we show the currently available spectral lines and those we expect to deploy later in the project. In addition, we will compute ModelSets for a full range of metallicity <span class="math">\(Z\)</span>.
                     </p>
-                    </p><p class="myp">
-                    In <a class="mya" href="https://pdrtpy.readthedocs.io">pdrtpy</a>, these are referred to as the <i>wk2020</i> ModelSet. 
                     </p>
+                    <p class="myp">
+                    <b><u>Alternate Viewing Angle Models</u></b>
+<br>
+                    The viewing angle models calculate the emitted line intensity along a line-of-sight
+                    at angle, <span class="math">\(\theta\)</span>, with respect to the illuminated face of the PDR. The
+                    angle <span class="math">\(\theta=0 \)</span> is a line that is perpendicular to the face while the
+                    angle <span class="math">\(\theta=90\)</span> is a line that is parallel to the face. 
+                    The line intensity
+                    for each transition as well as the integrated far-infrared intensity
+                    is calculated as in Pabst et al. 2017, A&amp;A, 606, A29. We make the
+                    assumption that each line of sight passes through all layers of the PDR
+                    to an optical depth of <span class="math">\(A_v=7\)</span> from the face.  This means that the integral
+                    along the line-of-sight as well as <span class="math">\(A_v\)</span>
+                    increases as <span class="math">\(7/cos(\theta)\)</span>, 
+                    and the thickness of the PDR increases as
+            <span class="math">
+            \(7*tan(\theta)\) 
+            </span>.
+            The user should keep in mind that this assumption may lead
+            to unrealistically large <span class="math">\(A_v\)</span> that should be checked against observations
+            if possible. The different angles and <span class="math">\(A_v\)</span>s are given in the FITS headers
+            as follows:
+<ul>
+    <li class="myp">
+        <em>LOSANGLE</em> &ndash; angle in degrees with respect to illuminated face of PDR
+    </li>
+    <li class="myp">
+        <em>AV</em> &ndash; optical depth in magnitudes of visual extinction of PDR along a line
+through the illuminated face to the deepest layers. All models are fixed at <span class="math">\(A_v=7\)</span>.
+    </li>
+    <li class="myp">
+        <em>AVPERP</em> &ndash; optical depth in magnitudes of visual extinction of the PDR
+        perpendicular to <span class="math">\(A_v\)</span>.
+    </li>
+    <li class="myp">
+        <em>AVLOS</em> &ndash; optical depth in magnitudes of visual extinction of the PDR along
+the line-of-sight.
+    </li>
+</ul>
+Note that the face-on intensity is angle averaged over intensities
+emitted from the PDR face as in Tielens &amp; Hollenbach (1985), but the
+angle-on intensity is the intensity along the ray at the given angle.
+            </p>
         <h4>2006 Models</h4>
         <p  class="myp">
-<a class="mya" href="/models/wk2006/index.html">These models</a> 
-        are identical to those available in the "classic" web-based PDR Toolbox.  They have metallicity <span class="math">\(Z=1\)</span>, 
-and contain [C I], [C II], [O I], Fe, Si, H<sub>2</sub> lines and the <sup>12</sup>CO ladder up to <span class="math">\(J=14\rightarrow 13\)</span>. For some lines,  <span class="math">\(Z=3\)</span> is also available.
-        </p><p  class="myp">
         In <a class="mya" href="https://pdrtpy.readthedocs.io">pdrtpy</a>, these are referred to as the <i>wk2006</i> ModelSet.
+        </p>
+        <p  class="myp">
+<a class="mya" href="/models/wk2006/index.html">These models</a> 
+        are identical to those that were available in the now-deprecated web-based PDR Toolbox.  They have metallicity <span class="math">\(Z=1\)</span>, 
+and contain [C I], [C II], [O I], Fe, Si, H<sub>2</sub> lines and the <sup>12</sup>CO ladder up to <span class="math">\(J=14\rightarrow 13\)</span>. For some lines,  <span class="math">\(Z=3\)</span> is also available.
         </p>
 
                 </div><!-- col-->
