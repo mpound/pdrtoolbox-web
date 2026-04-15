@@ -5,9 +5,8 @@ from multiprocessing import Pool,Manager
 import numpy.ma as ma
 import os
 import jinja2
-from copy import deepcopy
 import argparse
-import warnings
+
 
 
 def init_processes(l):
@@ -15,9 +14,10 @@ def init_processes(l):
     lock = l
 
 class Page():
-    def __init__(self):
+    def __init__(self, kosmatau):
         self.env=jinja2.Environment(loader=jinja2.FileSystemLoader("."))
         self.base_dir = "../models.new"
+        self.kosmatau = kosmatau
 
     def write_all_models_page(self,all_models,all_names):
         # don't instantiate these in __init__ or you get a 
@@ -37,21 +37,27 @@ class Page():
     def make_page(self,all_models,all_names,lock,quick=False):
         # check all models.tab files and existence of all therein
         t = ModelSet.all_sets()
-        z = zip(list(t["name"]),list(t["z"]),list(t["medium"]),list(t["mass"]))
+        ziplist = zip(list(t["name"]),list(t["z"]),list(t['losangle']),list(t["medium"]),list(t["mass"]))
         
         if False:
             print("single threading...")
-            for name,metallicity,medium,mass in z:
-                self.process_modelset(name,metallicity,medium,mass)
+            for name,metallicity,losangle,medium,mass in ziplist:
+                self.process_modelset(name,metallicity,losangle,medium,mass)
         else:
             print("pooling...")
             pool = Pool(os.cpu_count()-2,initializer=init_processes,initargs=(lock,))
-            pool.starmap(self.process_modelset,z)
+            pool.starmap(self.process_modelset,ziplist)
 
-    def process_modelset(self,n,z,md,m):
-        debug = True
-        if debug and "lmc" not in n: return
-        print(f'Making page for {n,z,md,m}')
+    def process_modelset(self,n,z,losangle,md,m):
+        #debug = True
+        #if debug and "lmc" not in n: return
+        if n.startswith("kt") and not self.kosmatau:
+            print(f"skipping {n}")
+            return
+        if n.startswith("lmc") or n.startswith("smc") or n.startswith("wk2006"):
+            print(f"skipping {n}")
+            return
+        print(f'Making page for {n,z,losangle,md,m}')
         explain = dict()
         explain["lmc"] = 'The models in the wk2006 Large Magellanic Cloud ModelSet are based <a class="mya" href="http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=1999ApJ...527..795K" >Kaufman et al. 1999</a> and <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2006ApJ...644..283K/abstract" >Kaufman et al. 2006 </a>. They use <a class="mya" href="/models.html#parameters">these parameters.</a> More details are in the FITS headers.'
         explain["smc"] = 'The models in the wk2006 Small Magellanic Cloud ModelSet are based <a class="mya" href="http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=1999ApJ...527..795K" >Kaufman et al. 1999</a> and <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2006ApJ...644..283K/abstract" >Kaufman et al. 2006 </a>. They use <a class="mya" href="/models.html#parameters">these parameters.</a> More details are in the FITS headers.'
@@ -75,7 +81,8 @@ class Page():
         indextemplatefile = 'index_page_jinja_template.html'
         indextemplate = self.env.get_template(indextemplatefile)
 
-        ms = ModelSet(name=n,z=z,medium=md,mass=m)
+        ms = ModelSet(name=n,z=z,losangle=losangle,medium=md,mass=m)
+
         if n.startswith("kt2013"):
             ms.keyname = "kt2013"
         else:
@@ -83,8 +90,9 @@ class Page():
         ms.tarball = f"/models/{ms.keyname}_models.tgz"
         ms.header = ms.description.replace("$A_V$","A<sub>V</sub>").replace("$R_V$","R<sub>V</sub>").replace("M$_\odot$", "M<sub>&odot;</sub>")
         if m is None or ma.is_masked(m):
-            ms.dir = f'{n}_Z{z}_{md}'
+            ms.dir = f'{n}_Z{z}_L{losangle}_{md}'
         else:
+            # KT models don't have losangle
             ms.dir = f'{n}_Z{z}_{md}_M{m}'
         ms.dir = ms.dir.replace(' ','_')
         with lock:
@@ -147,12 +155,17 @@ class Page():
                     model.xaxis = "electron gas temperature <em>T<sub>e</sub></em>"
                     model.yaxis = "electron density <em>n<sub>e</sub></em>"
                     model.where = "from the ionized gas layer "
+                    model.viewingangle=""
                 else:
                     mp.plot(r,yaxis_unit="Habing",label=True, legend=False,
                             norm="zscale",cmap='plasma')
                     model.where = "from the surface "
                     model.xaxis = "cloud density <em>n</em>"
                     model.yaxis = "the FUV flux incident on the cloud <em>G<sub>0</sub></em>"
+                    if ms.name=="wk2020":
+                        model.viewingangle=f"The above model is at a viewing angle of i={losangle} degrees, where i=0 is face-on."
+                    else:
+                        model.viewingangle=""
                 mp.savefig(f'{self.base_dir}/{fig_out}')
                 model.write(f'{self.base_dir}/{fits_out}')
                 # This is supposed to stop complaints about 
@@ -169,12 +182,14 @@ class Page():
                # print("===========================================")
                 fh.close()
 
-            except FileNotFoundError:
-                raise
-            except Exception as e:
-                raise
+            except FileNotFoundError as fne:
+                print(fne) 
                 success = False
-                failed.append(f'{r} {modelfile} : {str(e)}\n')
+                failed.append(f'{r} {modelfile} : {str(fne)}\n')
+            except Exception as exc:
+                print(exc)
+                success = False
+                failed.append(f'{r} {modelfile} : {str(exc)}\n')
         if not success:
             print("Couldn't open these models:",failed)
         table_contents += '</tr>'
@@ -193,6 +208,7 @@ if __name__ == '__main__':
     parser.add_argument('-q','--quick',help='skip creating plots, just update all_models page',action="store_true")
     #TODO figure out how to actuall use this
     parser.add_argument('-m','--modelset',help='only do the given modelset',action="store",default=None)
+    parser.add_argument('-k','--kosmatau',help='do the kosma tau models',action="store_true",default=False)
     args = parser.parse_args()
     if args.quick:
         quick = True
@@ -202,7 +218,7 @@ if __name__ == '__main__':
     all_models = manager.dict()
     all_names = manager.dict()
     lock = manager.Lock()
-    p = Page()
+    p = Page(kosmatau=args.kosmatau)
     print("using quick = ",quick)
     p.make_page(all_models,all_names,lock,quick=quick)
     p.write_all_models_page(all_models,all_names)
