@@ -71,7 +71,7 @@ Given a set of observations of spectral line or continuum intensities, PDR Toolb
 incident intensity and cloud density based on our models of PDR emission. 
 One can also fit <i>H<sub>2</sub></i> rovibrational emission excitation diagrams to determine temperature, column density, and ortho-to-para ratio.
 </p>
-<h4>The current version is <a class="mya" href="https://pdrtpy.readthedocs.io/en/stable/">2.6.4</a> (released April 15, 2026)</h4>
+<h4>The current version is <a class="mya" href="https://pdrtpy.readthedocs.io/en/stable/">3.0.1</a> (released MONTH, 2026)</h4>
 <hr width="50%">
 </div>
 <h4>Release Highlights</h4>
@@ -79,18 +79,22 @@ One can also fit <i>H<sub>2</sub></i> rovibrational emission excitation diagrams
  <div class="row text-left">
  <div class="col-md">
 <ul>
-<li><h6>Alternative Viewing Angle Models</h6>
+<li><h6>Small Magellanic Cloud Models</h6>
 <p class="myp">
-Wolfire-Kaufman models are now available for <a class="mya" href="http://pdrtpy.readthedocs.io/en/stable/pdrtpy.modelset.html">viewing inclination angles</a> from 0 (face-on) to 75 degrees.   We also created <a class="mya" href="https://github.com/mpound/pdrtpy-nb/blob/master/notebooks/PDRT_Example_EdgeOnModel_Horsehead.ipynb">new notebook showing how to use the new angles.</a>.
 </p>
 </li>
-<li><h6>Wide variety of dust extinction curves supported</h6>
- Karl Gordon's <a class="mya" href="https://dust-extinction.readthedocs.io/en/latest/">dust extinction package</a> is now used for fitting visual extinction in excitation diagrams.
+<li><h6>More molecules added to excitation fitting</h6>
+ Excitation diagrams for  C<sup>18</sup>O, <sup>13</sup>C<sup>18</sup>O, and CH<sup>+</sup> can now be fit, with partition functions drawn from HITRAN and EXOMOL, and transition data from Meudon PDR7 code.
 </li>
-<li><h6>Bug fixes</h6>
+<li><h6>Performance improvements</h6>
+Both radiation field/density fitting and excitation diagram fitting now fit multi-pixel maps 2x-11x faster.
+</li>
+<li><h6>New and updated notebooks</h6>
+</li>
+<li><h6>Other changes and bug fixes</h6>
 <p class="myp">We have made several <a class="mya" 
-href="https://github.com/mpound/pdrtpy/issues?q=is%3Aissue%20closed%3A2025-02-06..2026-04-15%20%20"
->bug fixes and addressed requests for enhancment.</a> Thanks to users who reported issues!
+href="https://github.com/mpound/pdrtpy/issues?q=is%3Aissue%20closed%3A2026-04-15..2026-09-15%20%20"
+>enhancments and bug fixes.</a> Thanks to users who reported issues or asked for new features!
 </p>
 </li>
 
