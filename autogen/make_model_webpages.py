@@ -31,6 +31,7 @@ class Page():
         names = dict(reversed(sorted(list(all_names.items()))))
         #for key,value in wkfirst.items():
         #    print(key)
+        print("rendering all models...")
         output=self.allmodelstemplate.render(all_models=wkfirst,all_names=names)
         fh = open(f'{self.base_dir}/index.html','w')
         fh.write(output)
@@ -47,8 +48,9 @@ class Page():
             for name,metallicity,losangle,medium,mass in ziplist:
                 self.process_modelset(name,metallicity,losangle,medium,mass)
         else:
-            print("pooling...")
-            pool = Pool(os.cpu_count()-2,initializer=init_processes,initargs=(lock,))
+            threads = os.cpu_count-2
+            print(f"pooling with {threads=")
+            pool = Pool(threads,initializer=init_processes,initargs=(lock,))
             pool.starmap(self.process_modelset,ziplist)
 
     def process_modelset(self,n,z,losangle,md,m):
@@ -57,9 +59,9 @@ class Page():
         if n.startswith("kt") and not self.kosmatau:
             print(f"skipping {n}")
             return
-        if n.startswith("wk") :
-            print(f"skipping {n}")
-            return
+        #if n.startswith("wk") :
+        #    print(f"skipping {n}")
+        #    return
         if n.startswith("lmc") or n.startswith("wk2006"):
             print(f"skipping {n}")
             return
@@ -205,6 +207,7 @@ class Page():
         fh = open(f'{self.base_dir}/{ms.dir}/index.html','w')
         fh.write(output)
         fh.close()
+        print(f'Making page for {n,z,losangle,md,m}')
 
 
 if __name__ == '__main__':
@@ -212,10 +215,9 @@ if __name__ == '__main__':
 #    warnings.simplefilter("ignore",DeprecationWarning)
 #    warnings.simplefilter("ignore",UserWarning)
     parser = argparse.ArgumentParser(description='Create model webpages for PDR Toolbox website dustem.astro.umd.edu.', prog=sys.argv[0])
-    parser.add_argument('-q','--quick',help='skip creating plots, just update all_models page',action="store_true")
-    #TODO figure out how to actuall use this
-    parser.add_argument('-m','--modelset',help='only do the given modelset',action="store",default=None)
     parser.add_argument('-k','--kosmatau',help='do the kosma tau models',action="store_true",default=False)
+    parser.add_argument('-m','--modelset',help='only do the given modelset',action="store",default=None)
+    parser.add_argument('-q','--quick',help='skip creating plots, just update all_models page',action="store_true")
     args = parser.parse_args()
 
     if args.quick:
