@@ -176,7 +176,7 @@ class Page():
                     model.where = "from the surface "
                     model.xaxis = "cloud density <em>n</em>"
                     model.yaxis = "the FUV flux incident on the cloud <em>G<sub>0</sub></em>"
-                    if ms.name=="wk2020":
+                    if ms.name=="wk2020" or ms.name="smc":
                         model.viewingangle=f"The above model is at a viewing angle of i={losangle} degrees, where i=0 is face-on."
                     else:
                         model.viewingangle=""
