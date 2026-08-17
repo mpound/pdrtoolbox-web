@@ -15,10 +15,11 @@ def init_processes(l):
     lock = l
 
 class Page():
-    def __init__(self, kosmatau):
+    def __init__(self, kosmatau, modelset=None):
         self.env=jinja2.Environment(loader=jinja2.FileSystemLoader("."))
         self.base_dir = Path("../models.new")
         self.kosmatau = kosmatau
+        self.modelset = modelset
         self.base_dir.mkdir(exist_ok=True)
 
     def write_all_models_page(self,all_models,all_names):
@@ -40,16 +41,21 @@ class Page():
     def make_page(self,all_models,all_names,lock,quick=False):
         # check all models.tab files and existence of all therein
         t = ModelSet.all_sets()
+        if self.modelset is not None:
+            t = t[t["name"] == self.modelset]
+            if len(t) == 0:
+                print(f"no ModelSet found matching name '{self.modelset}'")
+                return
         names = list(t["name"])
-        ziplist = zip(list(t["name"]),list(t["z"]),list(t['losangle']),list(t["medium"]),list(t["mass"]))
-        
+        ziplist = list(zip(list(t["name"]),list(t["z"]),list(t['losangle']),list(t["medium"]),list(t["mass"])))
+
         if False:
             print("single threading...")
             for name,metallicity,losangle,medium,mass in ziplist:
                 self.process_modelset(name,metallicity,losangle,medium,mass)
         else:
-            threads = os.cpu_count-2
-            print(f"pooling with {threads=")
+            threads = os.cpu_count()-2
+            print(f"pooling with threads={threads}")
             pool = Pool(threads,initializer=init_processes,initargs=(lock,))
             pool.starmap(self.process_modelset,ziplist)
 
@@ -228,7 +234,7 @@ if __name__ == '__main__':
     all_models = manager.dict()
     all_names = manager.dict()
     lock = manager.Lock()
-    p = Page(kosmatau=args.kosmatau)
+    p = Page(kosmatau=args.kosmatau, modelset=args.modelset)
     print("using quick = ",quick)
     p.make_page(all_models,all_names,lock,quick=quick)
     p.write_all_models_page(all_models,all_names)
