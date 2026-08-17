@@ -24,8 +24,12 @@ def skip_modelset(n, kosmatau):
 
     KOSMA-tau (``kt*``) sets are only included when explicitly requested;
     ``lmc`` and ``wk2006`` sets are always skipped (see module docstring
-    in ``process_modelset`` history for why -- TODO(Marc): confirm reason
-    these two prefixes are permanently excluded).
+    in ``process_modelset``.   KT is typically skipped because we don't
+    expect an update for these models anytime soon.  LMC and 2006 are skipped because
+    they are also static. They will be replaced/deprecated soon at which time the 
+    second startswith should be removed. Or we make a generic --skip option which 
+    defaults to kt*
+
 
     Parameters
     ----------
@@ -129,7 +133,7 @@ class Page():
             n : str
                 ModelSet name.
             z : float
-                Metallicity. TODO(Marc): confirm units/reference (solar?).
+                Metallicity relative to solar.
             losangle : float
                 Line-of-sight viewing angle in degrees (``0`` = face-on).
             md : str
@@ -161,7 +165,7 @@ class Page():
         n : str
             ModelSet name.
         z : float
-            Metallicity. TODO(Marc): confirm units/reference (solar?).
+            Metallicity relative to solar.
         losangle : float
             Line-of-sight viewing angle in degrees (``0`` = face-on).
         md : str
@@ -300,7 +304,7 @@ class Page():
         n : str
             ModelSet name.
         z : float
-            Metallicity. TODO(Marc): confirm units/reference (solar?).
+            Metallicity relative to solar
         losangle : float
             Line-of-sight viewing angle in degrees (``0`` = face-on).
         md : str
@@ -310,8 +314,7 @@ class Page():
             Clump mass in solar masses, or `None` for ModelSets that
             don't have a mass axis.
         r : str
-            Ratio identifier as found in `ms.table["ratio"]`.
-            TODO(Marc): confirm exact format/meaning of this identifier.
+            Ratio identifier as found in `ms.table["ratio"]`, e.g. "CO76_CO10".
 
         Returns
         -------
