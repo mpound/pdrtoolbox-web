@@ -20,6 +20,26 @@ EXPLAIN["hii"] = 'We assume that the line emission is in the optically thin limi
 
 
 def skip_modelset(n, kosmatau):
+    """Determine whether a ModelSet should be excluded from generation.
+
+    KOSMA-tau (``kt*``) sets are only included when explicitly requested;
+    ``lmc`` and ``wk2006`` sets are always skipped (see module docstring
+    in ``process_modelset`` history for why -- TODO(Marc): confirm reason
+    these two prefixes are permanently excluded).
+
+    Parameters
+    ----------
+    n : str
+        ModelSet name, e.g. ``"wk2020"``, ``"smc"``, ``"kt2013wd01-7"``.
+    kosmatau : bool
+        If `True`, KOSMA-tau (``kt*``) ModelSets are allowed through.
+
+    Returns
+    -------
+    bool
+        `True` if the ModelSet named `n` should be skipped, `False`
+        otherwise.
+    """
     if n.startswith("kt") and not kosmatau:
         print(f"skipping {n}")
         return True
@@ -30,6 +50,22 @@ def skip_modelset(n, kosmatau):
 
 
 class Page():
+    """Generate the model webpages (per-ModelSet index pages, per-ratio
+    model pages, and the top-level all-models index page) into
+    ``../models.new``.
+
+    Parameters
+    ----------
+    kosmatau : bool
+        If `True`, include KOSMA-tau (``kt*``) ModelSets in addition to the
+        Wolfire/Kaufman and SMC ModelSets.
+    modelset : str, optional
+        If given, restrict generation to the ModelSet(s) with this name
+        (matches the ``name`` column of `ModelSet.all_sets()`, so e.g. a
+        KOSMA-tau name can still expand to multiple mass/medium variants).
+        Default is `None`, which processes all available ModelSets.
+    """
+
     def __init__(self, kosmatau, modelset=None):
         self.env=jinja2.Environment(loader=jinja2.FileSystemLoader("."))
         self.base_dir = Path("../models.new")
@@ -43,6 +79,24 @@ class Page():
         self._ms_cache = dict()
 
     def write_all_models_page(self,all_models,all_names):
+        """Render and write the top-level ``models.new/index.html`` page
+        listing every generated ModelSet.
+
+        Parameters
+        ----------
+        all_models : dict
+            Mapping of ModelSet output directory name (`ms.dir`) to its
+            HTML-escaped description (`ms.header`), as populated by
+            `register_modelset`.
+        all_names : dict
+            Mapping of ModelSet output directory name (`ms.dir`) to its
+            `pdrtpy` ModelSet name (e.g. ``"wk2020"``), as populated by
+            `register_modelset`.
+
+        Returns
+        -------
+        None
+        """
         # don't instantiate these in __init__ or you get a
         # "TypeError: cannot pickle weakref" from Pool.starmap
         self.allmodelstemplatefile = 'all_models_page_jinja_template.html'
@@ -59,6 +113,32 @@ class Page():
         fh.close()
 
     def selected_modelsets(self):
+        """Look up and filter the ModelSet specs to generate.
+
+        Starts from `ModelSet.all_sets()`, restricts to `self.modelset`
+        if one was given, normalizes masked ``mass`` values to `None`
+        (masked values are not hashable and are used as part of a cache
+        key in `process_ratio`), and drops any ModelSet excluded by
+        `skip_modelset`.
+
+        Returns
+        -------
+        list of tuple
+            Each tuple is ``(n, z, losangle, md, m)`` where:
+
+            n : str
+                ModelSet name.
+            z : float
+                Metallicity. TODO(Marc): confirm units/reference (solar?).
+            losangle : float
+                Line-of-sight viewing angle in degrees (``0`` = face-on).
+            md : str
+                Medium type, e.g. ``"constant density"``, ``"clumpy"``,
+                ``"non-clumpy"``.
+            m : float or None
+                Clump mass in solar masses, or `None` for ModelSets that
+                don't have a mass axis.
+        """
         t = ModelSet.all_sets()
         if self.modelset is not None:
             t = t[t["name"] == self.modelset]
@@ -72,8 +152,37 @@ class Page():
         return [spec for spec in ziplist if not skip_modelset(spec[0], self.kosmatau)]
 
     def register_modelset(self,n,z,losangle,md,m,all_models,all_names):
-        """Build the ModelSet and register it in all_models/all_names. Cheap
-        (no plotting) - safe to run serially in the main process."""
+        """Build a `ModelSet` and register it in `all_models`/`all_names`.
+
+        Cheap (no plotting) -- safe to run serially in the main process.
+
+        Parameters
+        ----------
+        n : str
+            ModelSet name.
+        z : float
+            Metallicity. TODO(Marc): confirm units/reference (solar?).
+        losangle : float
+            Line-of-sight viewing angle in degrees (``0`` = face-on).
+        md : str
+            Medium type, e.g. ``"constant density"``, ``"clumpy"``,
+            ``"non-clumpy"``.
+        m : float or None
+            Clump mass in solar masses, or `None` for ModelSets that
+            don't have a mass axis.
+        all_models : dict
+            Mapping of ModelSet output directory name to HTML-escaped
+            description; updated in place with this ModelSet's entry.
+        all_names : dict
+            Mapping of ModelSet output directory name to `pdrtpy`
+            ModelSet name; updated in place with this ModelSet's entry.
+
+        Returns
+        -------
+        pdrtpy.modelset.ModelSet
+            The constructed ModelSet, with `dir`, `header`, `keyname`, and
+            `tarball` attributes attached for use by the caller.
+        """
         ms = ModelSet(name=n,z=z,losangle=losangle,medium=md,mass=m)
         if n.startswith("kt2013"):
             ms.keyname = "kt2013"
@@ -92,6 +201,35 @@ class Page():
         return ms
 
     def make_page(self,all_models,all_names,quick=False,jobs=None):
+        """Generate model webpages for every selected ModelSet.
+
+        Registers all selected ModelSets serially, then (unless `quick`)
+        flattens every ModelSet's ratios into a single flat task list and
+        farms them out to a `multiprocessing.Pool` via `process_ratio`,
+        so parallelism is per-ratio rather than per-ModelSet. Results are
+        then grouped back by ModelSet directory to render each
+        ModelSet's ``index.html``.
+
+        Parameters
+        ----------
+        all_models : dict
+            Mapping of ModelSet output directory name to HTML-escaped
+            description; updated in place as ModelSets are registered.
+        all_names : dict
+            Mapping of ModelSet output directory name to `pdrtpy`
+            ModelSet name; updated in place as ModelSets are registered.
+        quick : bool, optional
+            If `True`, only register ModelSets (populate `all_models`/
+            `all_names`) without generating any plots, FITS files, or
+            per-ratio/index HTML pages. Default is `False`.
+        jobs : int, optional
+            Number of worker processes to use for plotting. Default is
+            `None`, which uses `os.cpu_count()`.
+
+        Returns
+        -------
+        None
+        """
         specs = self.selected_modelsets()
 
         if quick:
@@ -147,8 +285,51 @@ class Page():
             fh.close()
 
     def process_ratio(self,ms_dir,n,z,losangle,md,m,r):
-        """Plot and write out a single model ratio. Returns
-        (ms_dir, success, table_cell_html_or_None, error_or_None)."""
+        """Plot and write out a single model ratio.
+
+        Runs in a worker process. Rebuilds (or reuses, via
+        `self._ms_cache`) the `ModelSet`/`ModelPlot` for
+        ``(n, z, losangle, md, m)`` and generates the ratio's PNG plot,
+        FITS file, and per-ratio HTML page.
+
+        Parameters
+        ----------
+        ms_dir : str
+            Output directory name for this ratio's ModelSet (`ms.dir`,
+            as computed by `register_modelset`).
+        n : str
+            ModelSet name.
+        z : float
+            Metallicity. TODO(Marc): confirm units/reference (solar?).
+        losangle : float
+            Line-of-sight viewing angle in degrees (``0`` = face-on).
+        md : str
+            Medium type, e.g. ``"constant density"``, ``"clumpy"``,
+            ``"non-clumpy"``.
+        m : float or None
+            Clump mass in solar masses, or `None` for ModelSets that
+            don't have a mass axis.
+        r : str
+            Ratio identifier as found in `ms.table["ratio"]`.
+            TODO(Marc): confirm exact format/meaning of this identifier.
+
+        Returns
+        -------
+        tuple
+            ``(ms_dir, success, table_cell, error)`` where:
+
+            ms_dir : str
+                Same as the `ms_dir` parameter, echoed back so results
+                from multiple workers can be regrouped by ModelSet.
+            success : bool
+                Whether the ratio was processed without error.
+            table_cell : str or None
+                HTML ``<td>`` snippet linking to this ratio's page, or
+                `None` if `success` is `False`.
+            error : str or None
+                Description of the failure, or `None` if `success` is
+                `True`.
+        """
         key = (n,z,losangle,md,m)
         cached = self._ms_cache.get(key)
         if cached is None:
