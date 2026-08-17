@@ -192,7 +192,7 @@ class Page():
             model._title = model._title.replace("$\mu$","&micro;").replace("$_{FIR}$","<sub>FIR</sub>").replace("$_2$","<sub>2</sub>").replace("$A_V$","A<sub>V</sub>").replace("$^{13}$","<sup>13</sup>").replace("$A_V=0.01$","A<sub>V</sub> = 0.01")
                                     #.replace("$T_S$","T<sub>S</sub>")
             if "$" in model._title:
-                print(f"############ OOPS missed some latex {model._title}")
+                print(f"############ OOPS missed some latex {model._title} in {ms.name} {modelfile}")
             fig_out = f'{ms_dir}/{modelfile}.png'
             fig_html = f'{ms_dir}/{modelfile}.html'
             fits_out = f'{ms_dir}/{modelfile}.fits'
