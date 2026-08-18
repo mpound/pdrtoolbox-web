@@ -7,7 +7,9 @@ import os
 import jinja2
 import argparse
 import sys
+import warnings
 from pathlib import Path
+warnings.simplefilter("ignore",SyntaxWarning)
 
 EXPLAIN = dict()
 EXPLAIN["lmc"] = 'The models in the wk2006 Large Magellanic Cloud ModelSet are based <a class="mya" href="http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=1999ApJ...527..795K" >Kaufman et al. 1999</a> and <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2006ApJ...644..283K/abstract" >Kaufman et al. 2006 </a>. They use <a class="mya" href="/models.html#parameters">these parameters.</a> More details are in the FITS headers.'
@@ -426,9 +428,8 @@ class Page():
 
 
 if __name__ == '__main__':
-    print(__name__)
 #    warnings.simplefilter("ignore",DeprecationWarning)
-#    warnings.simplefilter("ignore",UserWarning)
+    warnings.simplefilter("ignore",SyntaxWarning)
     parser = argparse.ArgumentParser(description='Create model webpages for PDR Toolbox website dustem.astro.umd.edu.', prog=sys.argv[0])
     parser.add_argument('-k','--kosmatau',help='do the kosma tau models',action="store_true",default=False)
     parser.add_argument('-m','--modelset',help='only do the given modelset',action="store",default=None)
