@@ -59,15 +59,19 @@
                 <p class="myp">
 
                 The Wolfire/Kaufman models are primarily based on the work of 
-                <a class="mya" href="http://adsbit.harvard.edu/cgi-bin/nph-iarticle_query?1985ApJ...291..722T">Tielens &amp; Hollenbach 1985;</a> 
-                <a class="mya" href="http://adsbit.harvard.edu/cgi-bin/nph-iarticle_query?1990ApJ...358..116W">
+                <a class="mya" href="https://ui.adsabs.harvard.edu/abs/1985ApJ...291..722T/abstract">
+                    Tielens &amp; Hollenbach 1985;
+                </a> 
+                <a class="mya" href="https://ui.adsabs.harvard.edu/abs/1990ApJ...358..116W/abstract">
                 Wolfire et al. 1990;
                 </a>
-                <a class="mya" href='http://adsbit.harvard.edu/cgi-bin/nph-iarticle_query?1991ApJ...377..192H'>
+                <a class="mya" href="https://ui.adsabs.harvard.edu/abs/1991ApJ...377..192H/abstract">
                 Hollenbach et al. 1991;
                 </a>
-                <a class="mya" href="http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=1999ApJ...527..795K">Kaufman et al. 1999</a>; 
-                and <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2006ApJ...644..283K/abstract">Kaufman et al. 2006</a>.
+                <a class="mya" href="https://ui.adsabs.harvard.edu/abs/1999ApJ...527..795K/abstract">
+                    Kaufman et al. 1999</a>; 
+                and 
+                <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2006ApJ...644..283K/abstract">Kaufman et al. 2006</a>.
 
                  For a given set of gas phase elemental abundances and grain properties,
                  each model is described by a constant H nucleus number density,
@@ -107,6 +111,11 @@ one line intensity ratio and the ratio of the [C II] + [O I]
 intensity to the infrared dust continuum emission <span class="math notranslate nohighlight">\(I_{FIR}\)</span>. 
 More than two observed ratios will of course do a better job of determining unique <span class="math notranslate nohighlight">\(G_0\)</span> and <span class="math notranslate nohighlight">\(n\)</span>.
 
+<p class="myp">
+<b><i>Note:</i></b>
+In the Wolfire/Kaufman models, the FIR continuum includes all of the dust emission (including that from PAHs) from 8 &mu;m to 1 mm. This is sometimes called the TIR in the literature rather than FIR.
+</p>
+
 <!-- We have also provided
 a diagnostic plot combining the [C II]/[O I] and ([C II]+[O I])/FIR 
 ratios as in Wolfire, Tielens, &amp; Hollenbach 1990. 
@@ -129,6 +138,7 @@ equivalently the model values should be divided by 2).
            </div>
       </header>
 
+      <a name="modelspecifics">
       <section class="mypage-section bg-primary text-white mb-0" id="modelspecifics">
         <div class="container">
                 <div class="text-center">
@@ -155,6 +165,16 @@ equivalently the model values should be divided by 2).
                     </p>
                     </p>
                     <p class="myp">
+            </div>
+                <div class="col-lg-5 ml-auto">
+                  <div class="card-transparent">
+                    <a href="images/pdrttable.png"><img class="card-img-top" style="margin:0em 1em 1em 1em;border:3px;" src="images/pdrttable.png" align="left" width="100%" alt="Spectral lines modeled in PDRT"></a>
+        <div class="card-body"><p class="card-text" style="font-variant: small-caps;text-align:left">Current and future spectral line and metallicity coverage of the PDR Toolbox.</p></div>
+                  </div> <!-- card -->
+                </div> <!-- col-->
+            </div>
+            <div class="row">
+            <div class="col ml-auto">
                     <b><u>Alternate Viewing Angle Models</u></b>
 <br>
                     The viewing angle models calculate the emitted line intensity along a line-of-sight
@@ -194,48 +214,83 @@ the line-of-sight.
     </li>
 </ul>
 Note that the face-on intensity is angle averaged over intensities
-emitted from the PDR face as in Tielens &amp; Hollenbach (1985), but the
-angle-on intensity is the intensity along the ray at the given angle.
+emitted from the PDR face as in 
+                <a class="mya" href="https://ui.adsabs.harvard.edu/abs/1985ApJ...291..722T/abstract">
+                    Tielens &amp; Hollenbach 1985;
+                </a> 
+but the angle-on intensity is the intensity along the ray at the given angle.
             </p>
+<a name="smc">
+    <h4>SMC Models</h4>
+        <p  class="myp">
+        In <a class="mya" href="https://pdrtpy.readthedocs.io">pdrtpy</a>, these are referred to as the <i>smc</i> ModelSet.
+        The SMC models are primarily based on the work of 
+                <a class="mya" href="https://ui.adsabs.harvard.edu/abs/1985ApJ...291..722T/abstract">
+                    Tielens &amp; Hollenbach 1985;
+                </a> 
+                <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2006ApJ...644..283K/abstract">Kaufman et al. 2006</a>,
+                <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2012ApJ...754..105H/abstract">
+        Hollenbach et al. 2012,
+                </a>
+                    and 
+                    <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2016ApJ...826..183N/abstract">Neufeld &amp; Wolfire 2016</a>.
+        These use the updates as given for the 2020 Models and modified 
+        for SMC parameters as described in 
+        <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2018ApJ...853..111J/abstract">
+        Jameson et al. 2018
+        </a>
+        and 
+        <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2025ApJ...990..209C/abstract">
+        Clark et al. 2025. 
+        </a>
+        In particular, compared to Galactic, we adopt a
+        high FUV extinction curve and a low Av/N_H
+        <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2024ApJ...970...51G">
+        (Gordon et al. 2024), 
+        </a>
+        low gas phase metallicities 
+        <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2018cagn.conf..121T/abstract">
+        (Toribio San Cipriano et al.  2017), 
+        </a>
+        a low PAH abundance 
+        <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2010ApJ...715..701S/abstract">
+        (Sandstrom et al. 2010), 
+        </a>
+        and a low cosmic-ray ionization rate 
+        <a class="mya" href="https://ui.adsabs.harvard.edu/abs/2010A&A...523A..46A">
+            (Abdo et al. 2010).
+        </a>
+        </p>
         <h4>2006 Models</h4>
         <p  class="myp">
         In <a class="mya" href="https://pdrtpy.readthedocs.io">pdrtpy</a>, these are referred to as the <i>wk2006</i> ModelSet.
-        </p>
-        <p  class="myp">
-<a class="mya" href="/models/wk2006/index.html">These models</a> 
-        are identical to those that were available in the now-deprecated web-based PDR Toolbox.  They have metallicity <span class="math">\(Z=1\)</span>, 
+<a class="mya" href="/models/wk2006/index.html">These models</a> have metallicity <span class="math">\(Z=1\)</span>, 
 and contain [C I], [C II], [O I], Fe, Si, H<sub>2</sub> lines and the <sup>12</sup>CO ladder up to <span class="math">\(J=14\rightarrow 13\)</span>. For some lines,  <span class="math">\(Z=3\)</span> is also available.
         </p>
 
                 </div><!-- col-->
-                <div class="col-lg-5 ml-auto">
-                  <div class="card-transparent">
-                    <a href="images/pdrttable.png"><img class="card-img-top" style="margin:0em 1em 1em 1em;border:3px;" src="images/pdrttable.png" align="left" width="100%" alt="Spectral lines modeled in PDRT"></a>
-        <div class="card-body"><p class="card-text" style="font-variant: small-caps;text-align:left">Current and future spectral line and metallicity coverage of the PDR Toolbox.</p></div>
-                  </div> <!-- card -->
-                </div> <!-- col-->
             </div> <!-- row -->
 
+<a name="2020">
 <a name="parameters">
 
         <h4><center>WK Model Parameters</center></h4>
         <p class="myp">
-        Our 
-<a class="mya" href="/models/wk2006/index.html">2006 models</a> 
-use the standard parameters from <a class="mya" href="http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=1999ApJ...527..795K">Kaufman et al. 1999</a>.   Changes for the
-        <a class="mya" href="#2020">2020 models</a> are listed below.
+These models use many of the standard parameters from <a class="mya" href="http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=1999ApJ...527..795K">Kaufman et al. 1999</a> with later changes related to metallicity, updated abundances, rates, etc.
         The formation rate of H<sub>2</sub> goes as 
-        <span class="math notranslate nohighlight">\(R_{form}~n_{HI}~n\)</span>.
+        <span class="math notranslate nohighlight">\(R_{form} = k_{form}~n_{HI}~n\) cm<sup>-3</sup> s<sup>-1</sup></span>.
         The PAH abundance <span class="math notranslate nohighlight">\(X_{PAH}=n_{PAH}/n\)</span>.
         <!-- Gas Phase abundances of C, O, Si, S, Fe, Mg are from Savage &amp; Sembach 1996 -->
         </p>
 
     <table class="table table-striped" bgcolor="white">
-        <caption class="tablecaption"><h6>Parameters for 2006 Models</h6></caption>
+        <caption class="tablecaption"><h6>Model Parameters</h6></caption>
         <thead>
             <tr><th>Parameter</th>
             <th>Symbol</th>
-            <th>Value</th>
+            <th>wk2020</th>
+            <th>SMC</th>
+            <th>wk2006</th>
             </tr>
         </thead>
         <tbody>
@@ -243,77 +298,134 @@ use the standard parameters from <a class="mya" href="http://adsabs.harvard.edu/
             <td>Turbulent Doppler velocity</td>
             <td><span class="math notranslate nohighlight">\(\delta v_D\)</span></td>
             <td>1.5 km s<sup>-1</sup></td>
+            <td>1.5 km s<sup>-1</sup></td>
+            <td>1.5 km s<sup>-1</sup></td>
+            </tr>
+            <tr>
+            <td>Metallicity</td>
+            <td><span class="math notranslate nohighlight">Z</span></td>
+            <td>1</td>
+            <td>0.2</td>
+            <td>1, 3</td>
             </tr>
 
             <tr>
             <td>Carbon abundance</td>
             <td><span class="math notranslate nohighlight">\(X_C\)</span></td>
-            <td><span class="math notranslate nohighlight">\(1.4\times10^{-4}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(1.6\times10^{-4}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(3.2\times10^{-5}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(1.4, 4.2\times10^{-4}\)</span></td>
             </tr>
 
             <tr>
             <td>Oxygen abundance</td>
             <td><span class="math notranslate nohighlight">\(X_O\)</span></td>
-            <td><span class="math notranslate nohighlight">\(3.0\times10^{-4}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(3.2\times10^{-4}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(6.4\times10^{-5}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(3.0, 9.5\times10^{-4}\)</span></td>
             </tr>
 
             <tr>
             <td>Silicon abundance</td>
             <td><span class="math notranslate nohighlight">\(X_{Si}\)</span></td>
             <td><span class="math notranslate nohighlight">\(1.7\times10^{-6}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(3.4\times10^{-7}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(1.7, 5.1\times10^{-6}\)</span></td>
             </tr>
 
             <tr>
             <td>Sulfur abundance</td>
             <td><span class="math notranslate nohighlight">\(X_{S}\)</span></td>
             <td><span class="math notranslate nohighlight">\(2.8\times10^{-5}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(5.6\times10^{-6}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(2.8, 8.4\times10^{-5}\)</span></td>
             </tr>
 
             <tr>
             <td>Iron abundance</td>
             <td><span class="math notranslate nohighlight">\(X_{Fe}\)</span></td>
             <td><span class="math notranslate nohighlight">\(1.7\times10^{-7}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(3.4\times10^{-8}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(1.7, 5.2\times10^{-7}\)</span></td>
             </tr>
 
             <tr>
             <td>Magnesium abundance</td>
             <td><span class="math notranslate nohighlight">\(X_{Mg}\)</span></td>
             <td><span class="math notranslate nohighlight">\(1.1\times10^{-6}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(2.2\times10^{-7}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(1.1, 3.3\times10^{-6}\)</span></td>
+            </tr>
+
+            <tr>
+            <td>Fluorine abundance</td>
+            <td><span class="math notranslate nohighlight">\(X_{F}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(1.8\times10^{-8}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(3.6\times10^{-9}\)</span></td>
+            <td>Not included</td>
+            </tr>
+
+            <tr>
+            <td>Helium abundance</td>
+            <td><span class="math notranslate nohighlight">\(X_{He}\)</span></td>
+            <td>0.1</td>
+            <td>0.1</td>
+            <td>0.1</td>
+            </tr>
+
+            <tr>
+            <td>PAH abundance</td>
+            <td><span class="math notranslate nohighlight">\(X_{PAH}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(2\times10^{-7}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(2.6\times10^{-8}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(4, 18\times10^{-7}\)</span></td>
+            </tr>
+
+            <tr>
+                <td><sup>13</sup>C abundance</td>
+                <td><span class="math notranslate nohighlight">\(X_{13C}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(3.2\times10^{-6}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(6.4\times10^{-7}\)</span></td>
+            <td>Not included</td>
             </tr>
 
             <tr>
             <td>Dust abundance relative to diffuse ISM</td>
             <td><span class="math notranslate nohighlight">\(\delta_d\)</span></td>
             <td>1</td>
+            <td>0.1</td>
+            <td>1, 3</td>
             </tr>
 
             <tr>
             <td>FUV dust absorption/visual extinction</td>
             <td><span class="math notranslate nohighlight">\(\delta_{UV}\)</span></td>
             <td>1.8</td>
+            <td>3.6</td>
+            <td>1.8</td>
             </tr>
 
             <tr>
-            <td>Dust visual extinction per H</td>
-            <td><span class="math notranslate nohighlight">\(\sigma_V\)</span></td>
-            <td><span class="math notranslate nohighlight">\(5\times10^{-22}\)</span> cm<sup>-2</sup></td>
+            <td>Dust visual extinction per H column density</td>
+            <td><span class="math notranslate nohighlight">\(A_V/N_H\)</span></td>
+            <td><span class="math notranslate nohighlight">\(5.26\times10^{-22}\)</span> cm<sup>2</sup></td>
+            <td><span class="math notranslate nohighlight">\(5.35\times10^{-23}\)</span> cm<sup>2</sup></td>
+            <td><span class="math notranslate nohighlight">\(5,15\times10^{-22}\)</span> cm<sup>2</sup></td>
             </tr>
 
             <tr>
-            <td>Formation rate of H<sub>2</sub> on dust</td>
-            <td><span class="math notranslate nohighlight">\(R_{form}\)</span></td>
-            <td><span class="math notranslate nohighlight">\(3\times10^{-17}\)</span> s<sup>-1</sup></td>
-            </tr>
-
-            <tr>
-            <td>PAH abundance</td>
-            <td><span class="math notranslate nohighlight">\(X_{PAH}\)</span></td>
-            <td><span class="math notranslate nohighlight">\(5\times10^{-7}\)</span></td>
+            <td>Formation rate coefficient of H<sub>2</sub> on dust</td>
+            <td><span class="math notranslate nohighlight">\(k_{form}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(6\times10^{-17}\)</span> cm<sup>3</sup> s<sup>-1</sup></td>
+            <td><span class="math notranslate nohighlight">\(6\times10^{-18}\)</span> cm<sup>3</sup> s<sup>-1</sup></td>
+            <td><span class="math notranslate nohighlight">\(6,18\times10^{-17}\)</span> cm<sup>3</sup> s<sup>-1</sup></td>
             </tr>
 
             <tr>
             <td>Cloud H density</td>
             <td><span class="math notranslate nohighlight">\(n\)</span></td>
+            <td><span class="math notranslate nohighlight">\(10^{1} - 10^{7}\)</span> cm<sup>-3</sup></td>
+            <td><span class="math notranslate nohighlight">\(10^{1} - 10^{7}\)</span> cm<sup>-3</sup></td>
             <td><span class="math notranslate nohighlight">\(10^{1} - 10^{7}\)</span> cm<sup>-3</sup></td>
             </tr>
 
@@ -321,60 +433,20 @@ use the standard parameters from <a class="mya" href="http://adsabs.harvard.edu/
             <td>Incident UV flux</td>
             <td><span class="math notranslate nohighlight">\(G_0\)</span></td>
             <td><span class="math notranslate nohighlight">\(10^{-0.5} - 10^{6.5}\)</span> Habing</td>
-            </tr>
-
-        </tbody>
-    </table>
-
-<a name="2020">
-    <table class="table table-striped" width="100%" bgcolor="white">
-        <caption class="tablecaption"><h6>Parameters for 2020 Models Changed from 2006</h6></caption>
-        <thead>
-            <tr><th>Parameter</th>
-            <th>Symbol</th>
-            <th>Value</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-            <td>Carbon abundance</td>
-            <td><span class="math notranslate nohighlight">\(X_C\)</span></td>
-            <td><span class="math notranslate nohighlight">\(1.6\times10^{-4}\)</span></td>
-            </tr>
-
-            <tr>
-            <td>Oxygen abundance</td>
-            <td><span class="math notranslate nohighlight">\(X_O\)</span></td>
-            <td><span class="math notranslate nohighlight">\(3.2\times10^{-4}\)</span></td>
-            </tr>
-
-            <tr>
-            <td>Dust visual extinction per H</td>
-            <td><span class="math notranslate nohighlight">\(\sigma_V\)</span></td>
-            <td><span class="math notranslate nohighlight">\(5.26\times10^{-22}\)</span> cm<sup>-2</sup></td>
-            </tr>
-
-            <tr>
-            <td>Formation rate of H<sub>2</sub> on dust</td>
-            <td><span class="math notranslate nohighlight">\(R_{form}\)</span></td>
-            <td><span class="math notranslate nohighlight">\(6\times10^{-17}\)</span> s<sup>-1</sup></td>
-            </tr>
-
-            <tr>
-            <td>PAH abundance</td>
-            <td><span class="math notranslate nohighlight">\(X_{PAH}\)</span></td>
-            <td><span class="math notranslate nohighlight">\(2\times10^{-7}\)</span></td>
+            <td><span class="math notranslate nohighlight">\(10^{-0.5} - 10^{6.5}\)</span> Habing</td>
+            <td><span class="math notranslate nohighlight">\(10^{-0.5} - 10^{6.5}\)</span> Habing</td>
             </tr>
             <tr>
             <td>Viewing Angle</td>
             <td><span class="math notranslate nohighlight">\(i_{LOS}\)</span></td>
             <td><span class="math notranslate nohighlight">0 (face-on) to 75 degrees</span></td>
+            <td><span class="math notranslate nohighlight">0 (face-on) to 75 degrees</span></td>
+            <td><span class="math notranslate nohighlight">0 (face-on)</span></td>
             </tr>
-
 
         </tbody>
     </table>
-</div>
+
 </section>
 
 <a name="kosmatau">

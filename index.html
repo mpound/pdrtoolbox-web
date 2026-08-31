@@ -71,7 +71,7 @@ Given a set of observations of spectral line or continuum intensities, PDR Toolb
 incident intensity and cloud density based on our models of PDR emission. 
 One can also fit <i>H<sub>2</sub></i> rovibrational emission excitation diagrams to determine temperature, column density, and ortho-to-para ratio.
 </p>
-<h4>The current version is <a class="mya" href="https://pdrtpy.readthedocs.io/en/stable/">2.6.4</a> (released April 15, 2026)</h4>
+<h4>The current version is <a class="mya" href="https://pdrtpy.readthedocs.io/en/stable/">3.0.1</a> (released August 25, 2026)</h4>
 <hr width="50%">
 </div>
 <h4>Release Highlights</h4>
@@ -79,24 +79,25 @@ One can also fit <i>H<sub>2</sub></i> rovibrational emission excitation diagrams
  <div class="row text-left">
  <div class="col-md">
 <ul>
-<li><h6>Alternative Viewing Angle Models</h6>
-<p class="myp">
-Wolfire-Kaufman models are now available for <a class="mya" href="http://pdrtpy.readthedocs.io/en/stable/pdrtpy.modelset.html">viewing inclination angles</a> from 0 (face-on) to 75 degrees.   We also created <a class="mya" href="https://github.com/mpound/pdrtpy-nb/blob/master/notebooks/PDRT_Example_EdgeOnModel_Horsehead.ipynb">new notebook showing how to use the new angles.</a>.
-</p>
+<li><h6>Small Magellanic Cloud Models</h6>
+The <a class="mya" href="models.html#smc">SMC models</a> have been completely updated using SMC metallicity, abundances, cosmic-ray ionization rate, extinction curve, the improved WK2020 code, and the full range of viewing angles.
 </li>
-<li><h6>Wide variety of dust extinction curves supported</h6>
- Karl Gordon's <a class="mya" href="https://dust-extinction.readthedocs.io/en/latest/">dust extinction package</a> is now used for fitting visual extinction in excitation diagrams.
+<li><h6>More molecules added to excitation fitting</h6>
+    Excitation diagrams for  C<sup>18</sup>O, <sup>13</sup>C<sup>18</sup>O, and CH<sup>+</sup> <a class="mya" href="https://pdrtpy.readthedocs.io/en/stable/pdrtpy.tool.html#excitation-diagram-fitting">can now be fit,</a> with partition functions drawn from HITRAN and EXOMOL, and transition data from Meudon PDR7 code.
 </li>
-<li><h6>Fitting of CO and <sup>13</sup>CO excitation diagrams</h6></li>
- We have added support for fitting temperatures and column densities of excitation diagrams for CO and <sup>13</sup>CO. Users can fit other molecules by providing appropriate transition data.
+<<<<<<< HEAD
+<li><h6>Users can limit the model ranges with fitting line ratios</h6>
+    <a class="mya" href="https://pdrtpy.readthedocs.io/en/stable/pdrtpy.tool.html#pdrtpy.tool.lineratiofit.LineRatioFit.run">Limiting the density and radiation field allowable ranges</a> can help prevent unphysical solutions that are not excluded by the data.
+<li><h6>Performance improvements</h6>
+Both radiation field/density fitting and excitation diagram fitting now fit multi-pixel maps 2x-11x faster.
 </li>
-<li><h6>Updated notebooks</h6>
-The <a class="mya" href="https://github.com/mpound/pdrtpy-nb">tutorial notebooks</a> have been revised and a new one added to show use of the alternate viewing angle models.
+<li><h6>New and updated notebooks</h6>
+    <a class="mya" href="https://github.com/mpound/pdrtpy-nb">The Example notebooks</a> have been updated and a new notebook added show how to fit H<sub>2</sub> excitation on spatial maps.
 </li>
-<li><h6>Bug fixes</h6>
+<li><h6>Other changes and bug fixes</h6>
 <p class="myp">We have made several <a class="mya" 
-href="https://github.com/mpound/pdrtpy/issues?q=is%3Aissue%20closed%3A2025-02-06..2026-04-15%20%20"
->bug fixes and addressed requests for enhancment.</a> Thanks to users who reported issues!
+href="https://github.com/mpound/pdrtpy/issues?q=is%3Aissue%20closed%3A2026-04-15..2026-09-01%20%20"
+>enhancments and bug fixes.</a> Thanks to users who reported issues or asked for new features!
 </p>
 </li>
 
@@ -246,7 +247,7 @@ ran out, but we added lines when users
 requested and kept the service running. Single
 pixel detectors gave way to pixel arrays and the
 sub-mm science matured. 
-Since 2020, we have developed and released multiple versions
+Since 2020, with new funding, we have developed and released multiple versions
 of the Python package, retiring the CGI-based scripts.
 </p>
 </div>
